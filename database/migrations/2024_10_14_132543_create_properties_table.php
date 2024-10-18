@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('titre');
             $table->string('statut');
             $table->string('type');
-            $table->string('environnement');
             $table->string('nChambre');
             $table->string('nDouche');
             $table->string('nGarage');

@@ -13,7 +13,6 @@ class properties extends Model
         'titre',
         'statut',
         'type',
-        'environnement',
         'nChambre',
         'nDouche',
         'nGarage',

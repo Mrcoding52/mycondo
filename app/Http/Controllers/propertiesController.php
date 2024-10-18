@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\images;
 use App\Models\properties;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,14 +23,14 @@ class propertiesController extends Controller
             'titre' => ['required', 'string', 'max:255'],
             'statut' => ['required', 'string', 'max:255'],
             'type' => ['required', 'string', 'max:255'],
-            'environnement' => ['required', 'string', 'max:255'],
-            'nChambre' => ['required', 'integer', 'min:0'],
-            'nDouche' => ['required', 'integer', 'min:0'],
+            'nChambre' => [ 'integer', 'min:0'],
+            'nDouche' => [ 'integer', 'min:0'],
             'nGarage' => [ 'integer', 'min:0'],
             'nPicsine' => ['integer', 'min:0'],
+            'telephone' => ['required','integer', 'min:8', 'max:15'],
             'images' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:1024'],
             'adresse' => ['required', 'string', 'max:255'],
-            'details' => ['required', 'text', 'min:500'],
+            'details' => ['required', 'text', 'min:10'],
         ], [
             // Messages personnalisés pour les champs
             'titre.required' => 'Le titre est requis.',
@@ -39,9 +40,6 @@ class propertiesController extends Controller
             
             'type.required' => 'Le type est requis.',
             
-            'environnement.required' => 'L\'environnement est requis.',
-            
-            'nChambre.required' => 'Le nombre de chambres est requis.',
             'nChambre.integer' => 'Le nombre de chambres doit être un nombre entier.',
             'nChambre.min' => 'Le nombre de chambres doit être au moins 0.',
         
@@ -62,7 +60,7 @@ class propertiesController extends Controller
             'adresse.required' => 'L\'adresse est requise.',
             
             'details.required' => 'Les détails sont requis.',
-            'details.min' => 'Les détails doivent comporter minimum 500 caractères.',
+            'details.min' => 'Les détails doivent comporter minimum 10 caractères.',
         ]);
         
 
@@ -92,15 +90,15 @@ class propertiesController extends Controller
 
                 $path = $file->store('uploads','public');
                 images::create([
-                    'idPro'=> $produits->id,
-                    'filename' => $path,
+                    'idPro'=> $properties->id,
+                    'images' => $path,
                 ]);
 
             }
         }
 
 
-        return redirect('/produits')->with('status', 'Article publié avec succès...');
+        return redirect('/properties.create')->with('status', 'Article publié avec succès...');
     }
    
 }

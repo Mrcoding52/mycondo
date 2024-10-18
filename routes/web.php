@@ -2,27 +2,41 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\propertiesController;
+use App\Http\Controllers\servicesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+//Routes for services
 
+Route::get('/services', [servicesController::class, 'index'])->name('services');
 
-Route::get('/page', [propertiesController::class, 'index'])->name('acceuil');
+Route::get('/ajouter-un-service', [servicesController::class, 'create'])->name('service.create');
 
-Route::get('/services', function () {
-    return view('properties.services');
-})->name('services');
+Route::post('/ajouter-service', [servicesController::class, 'store'])->name('service.store');
+
+Route::get('/service/{services}', [servicesController::class, 'show'])->name('service.show');
+
+Route::get('/service/{id}/edit', [servicesController::class, 'edit'])->name('service.edit');
+
+Route::put('/service/{id}', [servicesController::class, 'update'])->name('service.update');
+
+Route::delete('/service/{services}', [servicesController::class, 'destroy'])->name('service.destroy');
 
 Route::get('/a-propos', function () {
     return view('properties.about');
 })->name('about');
 
 
+//Routes for properties
+
+Route::get('/page', [propertiesController::class, 'index'])->name('acceuil');
 
 Route::get('/publier-une-propriete', [propertiesController::class, 'create'])->name('property.create');
+
+Route::post('/ajouter-propriete', [propertiesController::class, 'store'])->name('property.store');
 
 
 
