@@ -20,9 +20,10 @@ return new class extends Migration
             $table->string('type');
             $table->string('nChambre');
             $table->string('nDouche');
+            $table->string('telephone');
             $table->string('nGarage');
             $table->string('nPicsine');
-            $table->string('images');
+            $table->double('price');
             $table->string('adresse');
             $table->string('details');
             $table->timestamps();

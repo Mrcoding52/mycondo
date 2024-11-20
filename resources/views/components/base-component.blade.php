@@ -29,13 +29,13 @@
 
     <!-- Favicon icon -->
     <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon" >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css')}}" />
 
     <!-- Google fonts -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700">
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700')}}">
+    <link href="{{asset('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600&amp;display=swap')}}" rel="stylesheet">
+    <link href="{{asset('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&amp;display=swap')}}" rel="stylesheet">
+    <link href="{{asset('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;300;400;500;600;700;800;900&amp;display=swap')}}" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/ie10-viewport-bug-workaround.css')}}">
@@ -111,7 +111,7 @@
                         
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="{{route('property.view')}}" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Proprietés
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -129,20 +129,6 @@
                                     <li><a class="dropdown-item" href="list-view-3.html">List View 3</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Listing Half</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="map-view.html">Map View 1</a></li>
-                                    <li><a class="dropdown-item" href="map-view-2.html">Map View 2</a></li>
-                                    <li><a class="dropdown-item" href="map-view-3.html">Map View 3</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Single Property</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="single-property.html">Single Property 1</a></li>
-                                    <li><a class="dropdown-item" href="single-property-2.html">Single Property 2</a></li>
-                                    <li><a class="dropdown-item" href="single-property-3.html">Single Property 3</a></li>
-                                </ul>
-                            </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -157,7 +143,7 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="{{route('about')}}" id="navbarDropdownMenuLink5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             A propos
                         </a>
                     </li>
@@ -193,18 +179,11 @@
         <div class="sidebar-navigation">
             <h3 class="heading">Pages</h3>
             <ul class="menu-list">
-                <li><a href="#" class="active pt0">Index <em class="fa fa-chevron-down"></em></a>
-                    <ul>
-                        <li><a href="index.html">Index 01</a></li>
-                        <li><a href="index-2.html">Index 02</a></li>
-                        <li><a href="index-3.html">Index 03</a></li>
-                        <li><a href="index-4.html">Index 04</a></li>
-                        <li><a href="index-5.html">Index 05</a></li>
-                        <li><a href="index-6.html">Index 06</a></li>
-                    </ul>
+                <li><a href="{{ route('acceuil') }}" class="active pt0">Acceuil <em class="fa fa-chevron-down"></em></a>
+                
                 </li>
                 <li>
-                    <a href="#">Listings <em class="fa fa-chevron-down"></em></a>
+                    <a href="{{route('property.view')}}">Proprietés <em class="fa fa-chevron-down"></em></a>
                     <ul>
                         <li>
                             <a href="#">Listing Grid <em class="fa fa-chevron-down"></em></a>
@@ -222,25 +201,9 @@
                                 <li><a href="list-view-3.html">List View 3</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#">Listing Half <em class="fa fa-chevron-down"></em></a>
-                            <ul>
-                                <li><a href="map-view.html">Map View 1</a></li>
-                                <li><a href="map-view-2.html">Map View 2</a></li>
-                                <li><a href="map-view-3.html">Map View 3</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Single Property <em class="fa fa-chevron-down"></em></a>
-                            <ul>
-                                <li><a href="single-property.html">Single Property 1</a></li>
-                                <li><a href="single-property-2.html">Single Property 2</a></li>
-                                <li><a href="single-property-3.html">Single Property 3</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </li>
-                <li><a href="#">Agents <em class="fa fa-chevron-down"></em></a>
+                <li><a href="{{route('services')}}">Services <em class="fa fa-chevron-down"></em></a>
                     <ul>
                         <li><a href="agent-grid.html">Agent Grid 1</a></li>
                         <li><a href="agent-grid-2.html">Agent Grid 2</a></li>
@@ -249,103 +212,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Pages <em class="fa fa-chevron-down"></em></a>
-                    <ul>
-                        <li>
-                            <a href="#">About <em class="fa fa-chevron-down"></em></a>
-                            <ul>
-                                <li><a href="about.html">About 1</a></li>
-                                <li><a href="about-2.html">About 2</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Services <em class="fa fa-chevron-down"></em></a>
-                            <ul>
-                                <li><a href="services-1.html">Services 1</a></li>
-                                <li><a href="services-2.html">Services 2</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Pricing Tables <em class="fa fa-chevron-down"></em></a>
-                            <ul>
-                                <li><a href="pricing-tables.html">Pricing Tables 1</a></li>
-                                <li><a href="pricing-tables-2.html">Pricing Tables 2</a></li>
-                                <li><a href="pricing-tables-3.html">Pricing Tables 3</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Gallert <em class="fa fa-chevron-down"></em></a>
-                            <ul>
-                                <li><a href="gallery-1.html">Gallery 1</a></li>
-                                <li><a href="gallery-2.html">Gallery 2</a></li>
-                                <li><a href="gallery-3.html">Gallery 3</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Typography <em class="fa fa-chevron-down"></em></a>
-                            <ul>
-                                <li><a href="typography.html">Typography 1</a></li>
-                                <li><a href="typography-2.html">Typography 2</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Faq <em class="fa fa-chevron-down"></em></a>
-                            <ul>
-                                <li><a href="faq.html">Faq 1</a></li>
-                                <li><a href="faq-2.html">Faq 2</a></li>
-                                <li><a href="faq-3.html">Faq 3</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="property-comparison.html">Property Comparison</a></li>
-                        <li><a href="search-brand.html">Property Brands</a></li>
-                        <li><a href="elements.html">Elements</a></li>
-                        <li><a href="icon.html">Icon</a></li>
-                        <li><a href="coming-soon.html">Coming Soon</a></li>
-                        <li>
-                            <a href="#">My Profile <em class="fa fa-chevron-down"></em></a>
-                            <ul>
-                                <li><a href="my-profile.html">My Profile</a></li>
-                                <li><a href="my-property.html">My Property</a></li>
-                                <li><a href="favorited-property.html">Favorited Property</a></li>
-                                <li><a href="change-password.html">Change Password</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Pages 404 <em class="fa fa-chevron-down"></em></a>
-                            <ul>
-                                <li><a href="404.html">Pages 404</a></li>
-                                <li><a href="404-2.html">Pages 404 2</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Login <em class="fa fa-chevron-down"></em></a>
-                            <ul>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="signup.html">Signup</a></li>
-                                <li><a href="forgot-password.html">Forgot Password</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Blog <em class="fa fa-chevron-down"></em></a>
-                    <ul>
-                        <li>
-                            <a href="#">Grid Layout <em class="fa fa-chevron-down"></em></a>
-                            <ul>
-                                <li><a href="blog-full-grid.html">Full Grid</a></li>
-                                <li><a href="blog-grid-sidebar.html">With Sidebar</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">List Layout <em class="fa fa-chevron-down"></em></a>
-                            <ul>
-                                <li><a href="blog-full-list.html">Full List</a></li>
-                                <li><a href="blog-list-sidebar.html">With Sidebar</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="blog-detail.html">Blog Details</a></li>
-                    </ul>
+                    <a href="{{route('about')}}">A propos <em class="fa fa-chevron-down"></em></a>
                 </li>
                 <li>
                     <a href="#">Contact <em class="fa fa-chevron-down"></em></a>
@@ -356,45 +223,9 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="submit-property.html">Submit Property</a>
+                    <a href="{{route('property.create')}}">Publier un bien</a>
                 </li>
             </ul>
-        </div>
-        <div class="get-in-touch">
-            <h3 class="heading">Get in Touch</h3>
-            <div class="get-in-touch-box d-flex">
-                <i class="flaticon-technology-1"></i>
-                <div class="detail">
-                    <a href="tel:0477-0477-8556-552">0477 8556 552</a>
-                </div>
-            </div>
-            <div class="get-in-touch-box d-flex">
-                <i class="flaticon-envelope"></i>
-                <div class="detail">
-                    <a href="#">info@themevessel.com</a>
-                </div>
-            </div>
-            <div class="get-in-touch-box d-flex mb-0">
-                <i class="flaticon-globe"></i>
-                <div class="detail">
-                    <a href="#">info@themevessel.com</a>
-                </div>
-            </div>
-        </div>
-        <div class="get-social">
-            <h3 class="heading">Get Social</h3>
-            <a href="#" class="facebook-bg">
-                <i class="fa fa-facebook"></i>
-            </a>
-            <a href="#" class="twitter-bg">
-                <i class="fa fa-twitter"></i>
-            </a>
-            <a href="#" class="google-bg">
-                <i class="fa fa-google"></i>
-            </a>
-            <a href="#" class="linkedin-bg">
-                <i class="fa fa-linkedin"></i>
-            </a>
         </div>
     </div>
 </nav>
@@ -418,79 +249,49 @@
         <div class="row">
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                 <div class="footer-item">
-                    <h4>Contact Us</h4>
+                    <h4>Informations de contact</h4>
                     <ul class="contact-info">
                         <li>
-                            360 Harvest St, North Subract, London. United States Of Amrica.
+                            Cotonou, Benin.
                         </li>
                         <li>
-                            <a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
+                            <a href="mailto:sales@hotelempire.com">info@gmail.com</a>
                         </li>
                         <li>
-                            <a href="tel:+55-417-634-7071">+1 347-465-0659</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
-                <div class="footer-item">
-                    <h4>Properties Types</h4>
-                    <ul class="links">
-                        <li>
-                            <a>Apartment</a>
-                        </li>
-                        <li>
-                            <a>Restaurant</a>
-                        </li>
-                        <li>
-                            <a>My Houses</a>
-                        </li>
-                        <li>
-                            <a>Villa & Condo</a>
-                        </li>
-                        <li>
-                            <a>Family House</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
-                <div class="footer-item">
-                    <h4>Quick Links</h4>
-                    <ul class="links">
-                        <li>
-                            <a>About Us</a>
-                        </li>
-                        <li>
-                            <a>Services</a>
-                        </li>
-                        <li>
-                            <a>Properties Details</a>
-                        </li>
-                        <li>
-                            <a>My Account</a>
-                        </li>
-                        <li>
-                            <a> Privacy Policy</a>
+                            <a href="tel:+55-417-634-7071">+229 347-465-659</a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="footer-item clearfix">
-                    <h4>Subscribe</h4>
-                    <div class="subscribe-box-2">
-                        <form class="form-inline d-flex" action="#" method="GET">
-                            <input type="text" class="form-control mb-sm-0" id="inlineFormInputName4" placeholder="Your Email">
-                            <button type="submit" class="btn"><i class="fa fa-paper-plane"></i></button>
-                        </form>
-                    </div>
-                    <ul class="social-list clearfix">
-                        <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" class="google-bg"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#" class="rss-bg"><i class="fa fa-rss"></i></a></li>
-                        <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                <div class="footer-item">
+                    <h4>Types de proprietés</h4>
+                    <ul class="links">
+                        <li>
+                            <a>Apartement</a>
+                        </li>
+                        <li>
+                            <a>Maison</a>
+                        </li>
+                        <li>
+                            <a>Parcelle</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                <div class="footer-item">
+                    <h4>Liens rapides</h4>
+                    <ul class="links">
+                        <li>
+                            <a href="{{route('acceuil')}}">Acceuil</a>
+                        </li>
+                        <li>
+                            <a href="{{route('services')}}">Services</a>
+                        </li>
+                        <li>
+                            <a href="{{route('about')}}">A propos</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -504,7 +305,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
-                <p class="copy">© 2022 <a href="#">Theme Vessel.</a> Trademarks and brands are the property of their respective owners.</p>
+                <p class="copy">© 2024 <a href="#">CONDO.</a> tous les droits sont réserve.</p>
             </div>
         </div>
     </div>
@@ -514,7 +315,7 @@
 <!-- Full Page Search -->
 <div id="full-page-search">
     <button type="button" class="close">×</button>
-    <form action="https://storage.googleapis.com/theme-vessel-items/checking-sites/real-house-2-html/HTML/main/index.html#">
+    <form action="">
         <input type="search" value="" placeholder="type keyword(s) here"/>
         <button type="submit" class="btn btn-sm button-theme">Search</button>
     </form>

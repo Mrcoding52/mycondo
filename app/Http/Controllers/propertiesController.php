@@ -10,7 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class propertiesController extends Controller
 {
     public function  index(){
-        return view('index');
+        $properties=properties::all();
+        return view('index', compact('properties'));
+    }
+
+    public function viewProperty(){
+        $properties=properties::all();
+        return view('properties.properties', compact('properties'));
     }
 
     public function create(){
@@ -25,12 +31,13 @@ class propertiesController extends Controller
             'type' => ['required', 'string', 'max:255'],
             'nChambre' => [ 'integer', 'min:0'],
             'nDouche' => [ 'integer', 'min:0'],
-            'nGarage' => [ 'integer', 'min:0'],
-            'nPicsine' => ['integer', 'min:0'],
-            'telephone' => ['required','integer', 'min:8', 'max:15'],
+            'nGarage' => [ 'integer'],
+            'nPicsine' => ['integer'],
+            'price' => ['required', 'numeric'],
+            'telephone' => ['required','integer', 'min:8', ],
             'images' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:1024'],
             'adresse' => ['required', 'string', 'max:255'],
-            'details' => ['required', 'text', 'min:10'],
+            'details' => ['required', 'string'],
         ], [
             // Messages personnalisés pour les champs
             'titre.required' => 'Le titre est requis.',
@@ -51,6 +58,13 @@ class propertiesController extends Controller
 
             'nPicsine.integer' => 'Le nombre de piscines doit être un nombre entier.',
             'nPicsine.min' => 'Le nombre de piscines doit être au moins 0.',
+
+            'price.required' => 'Le prix est requis.',
+            'price.numeric' => 'Le prix doit être un nombre.',
+        
+            'telephone.required' => 'Le numéro de telephone est requis.',
+            'telephone.integer' => 'Le numéro de telephone doit être un nombre entier.',
+            'telephone.min' => 'Le numéro de telephone doit être au moins 8 caractères.',
         
             'images.required' => 'L\'image est requise.',
             'images.image' => 'Le fichier doit être une image.',
@@ -69,12 +83,12 @@ class propertiesController extends Controller
         $properties->titre = $request->titre;
         $properties->statut = $request->statut;
         $properties->type = $request->type;
-        $properties->environnement = $request->environnement;
         $properties->nChambre = $request->nChambre;
         $properties->nDouche = $request->nDouche;
+        $properties->telephone = $request->telephone;
         $properties->nGarage = $request->nGarage;
         $properties->nPicsine = $request->nPicsine;
-        $properties->images = $request->images;
+        $properties->price = $request->price;
         $properties->adresse = $request->adresse;
         $properties->details = $request->details;
 
@@ -83,10 +97,10 @@ class propertiesController extends Controller
 
         // creer un service de file upload pour eviter de repeter ce bout de code
 
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('images')) {
 
 
-            foreach ($request->file('image') as $file) {
+            foreach ($request->file('images') as $file) {
 
                 $path = $file->store('uploads','public');
                 images::create([

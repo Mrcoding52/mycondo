@@ -34,6 +34,8 @@ Route::get('/a-propos', function () {
 
 Route::get('/page', [propertiesController::class, 'index'])->name('acceuil');
 
+Route::get('/proprietes', [propertiesController::class, 'viewProperty'])->name('property.view');
+
 Route::get('/publier-une-propriete', [propertiesController::class, 'create'])->name('property.create');
 
 Route::post('/ajouter-propriete', [propertiesController::class, 'store'])->name('property.store');

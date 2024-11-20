@@ -11,7 +11,7 @@ class images extends Model
 
     protected $fillable = [
         'idPro',
-        'filename',
+        'image  ',
     ];
 
     public function propertie()

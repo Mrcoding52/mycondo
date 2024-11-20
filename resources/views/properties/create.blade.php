@@ -60,6 +60,10 @@
                                             <select class="selectpicker search-fields" name="type">
                                                 <option>Apartement</option>
                                                 <option>Maison</option>
+                                                <option>Parcelle</option>
+                                                <option>Commercial</option>
+                                                <option>Villa</option>
+                                                <option>Autres</option>
                                             </select>
                                             @error('type')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -68,14 +72,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <h3 class="heading-2">Galerie de la prorieté (La première image sera celle mise en avant)</h3>
+                            <h3 class="heading-2">Galerie de la proprieté (La première image sera celle mise en avant)</h3>
                             <div id="myDropZone" class="dropzone dropzone-design mb-50">
                                 <div class="dz-default dz-message"><span>Déposez vos images ici</span></div>
-                                <input type="hidden" name="file" />
-                                @error('statut')
+                            </div>
+                            <input type="file" name="images" />
+                                @error('images')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
                             <h3 class="heading-2">Adresse de la proprieté</h3>
                             <div class="row mb-30">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -83,6 +87,17 @@
                                         <label for="inputAddress1" class="form-label">Adresse</label>
                                         <input type="text" name="adresse" class="form-control" id="inputAddress1" placeholder="Pays-Département-Ville/Village-Quartier-Rue-Maison">
                                         @error('adresse')
+                                                <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-30">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="form-group address">
+                                        <label for="inputAddress1" class="form-label">Prix</label>
+                                        <input type="number" name="price" class="form-control" id="inputAddress1" placeholder="Prix">
+                                        @error('price')
                                                 <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

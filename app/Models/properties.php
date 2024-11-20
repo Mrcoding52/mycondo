@@ -15,6 +15,7 @@ class properties extends Model
         'type',
         'nChambre',
         'nDouche',
+        'telephone',
         'nGarage',
         'nPicsine',
         'images',

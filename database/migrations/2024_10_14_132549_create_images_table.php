@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('idPro');
             $table->foreign('idPro')->references('id')->on('properties')->onDelete('cascade');
-            $table->string('filename');
+            $table->string('images');
             $table->timestamps();
         });
     }
