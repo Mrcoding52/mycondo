@@ -5,9 +5,9 @@ use App\Http\Controllers\propertiesController;
 use App\Http\Controllers\servicesController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 //Routes for services
 
@@ -17,8 +17,8 @@ Route::get('/ajouter-un-service', [servicesController::class, 'create'])->name('
 
 Route::post('/ajouter-service', [servicesController::class, 'store'])->name('service.store');
 
-Route::get('/service/{services}', [servicesController::class, 'show'])->name('service.show');
-
+Route::get('/service.{id}', [servicesController::class, 'show'])->name('service.show');
+    
 Route::get('/service/{id}/edit', [servicesController::class, 'edit'])->name('service.edit');
 
 Route::put('/service/{id}', [servicesController::class, 'update'])->name('service.update');
@@ -32,9 +32,13 @@ Route::get('/a-propos', function () {
 
 //Routes for properties
 
-Route::get('/page', [propertiesController::class, 'index'])->name('acceuil');
+Route::get('/', [propertiesController::class, 'index'])->name('acceuil');
 
 Route::get('/proprietes', [propertiesController::class, 'viewProperty'])->name('property.view');
+
+Route::get('/co-proprietes', [propertiesController::class, 'coPropertyView'])->name('coproperty.view');
+
+Route::get('/proprietes.{id}', [propertiesController::class, 'show'])->name('property.show');
 
 Route::get('/publier-une-propriete', [propertiesController::class, 'create'])->name('property.create');
 

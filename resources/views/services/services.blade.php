@@ -41,11 +41,10 @@
                                 <h5><i class="fa-solid fa-briefcase"></i></h5>
                             </div>
                             <div class="title">
-                                <h4><a href="#">{{ $service->title }}</a></h4>
+                                <h4><a href="{{ route('service.show', $service->id) }}">{{ $service->title }}</a></h4>
                             </div>
                         </div>
-                        <p>{{ \Illuminate\Support\Str::limit($service->description, 100) }}</p>
-                        <a href="#" class="read-more">Lire plus</a>
+                        <a href="{{ route('service.show', $service->id) }}" class="read-more">Lire</a>
                     </div>
                 </div>
             </div>

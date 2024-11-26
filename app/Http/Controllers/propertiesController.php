@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\images;
 use App\Models\properties;
+use App\Models\statuts;
+use App\Models\Types;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,8 +21,20 @@ class propertiesController extends Controller
         return view('properties.properties', compact('properties'));
     }
 
+    public function coPropertyView(){
+        $coproperties=properties::where('statut', 3)->get();
+        return view('properties.co-properties', compact('coproperties'));
+    }
+
+    public function show($id){
+        $property = properties::find($id);
+        return view('properties.show', compact('property'));
+    }
+
     public function create(){
-        return view('properties.create');
+        $types = Types::all();
+        $statut = statuts::all();
+        return view('properties.create', compact('types', 'statut'));
     }
     
     public function store(Request $request){
@@ -35,7 +49,8 @@ class propertiesController extends Controller
             'nPicsine' => ['integer'],
             'price' => ['required', 'numeric'],
             'telephone' => ['required','integer', 'min:8', ],
-            'images' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:1024'],
+            'images' => 'required|array|max:4',
+            'images.*' => 'image|mimes:jpg,jpeg,png|max:3024',
             'adresse' => ['required', 'string', 'max:255'],
             'details' => ['required', 'string'],
         ], [
@@ -67,7 +82,6 @@ class propertiesController extends Controller
             'telephone.min' => 'Le numéro de telephone doit être au moins 8 caractères.',
         
             'images.required' => 'L\'image est requise.',
-            'images.image' => 'Le fichier doit être une image.',
             'images.mimes' => 'Le fichier doit être au format jpg, jpeg ou png.',
             'images.max' => 'L\'image ne doit pas dépasser 1 Mo.',
         

@@ -21,8 +21,10 @@ return new class extends Migration
             $table->string('nChambre');
             $table->string('nDouche');
             $table->string('telephone');
-            $table->string('nGarage');
-            $table->string('nPicsine');
+            $table->string('nGarage')->nullable();
+            $table->string('nPicsine')->nullable();
+            $table->string('co-property')->nullable();
+            $table->string('co-location')->nullable();
             $table->double('price');
             $table->string('adresse');
             $table->string('details');

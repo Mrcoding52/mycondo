@@ -44,6 +44,9 @@
     <!--[if lt IE 9]><script  src="js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script  src="{{asset('js/ie-emulation-modes-warning.js')}}"></script>
 
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script  src="js/html5shiv.min.js"></script>
@@ -96,8 +99,8 @@
 <header class="main-header sticky-header header-fixed main-header-5" id="main-header-6">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand logos mr-auto" href="index.html">
-                <img src="img/logos/logo-2.png" alt="logo" class="logo-photo">
+            <a class="navbar-brand logos mr-auto" href="{{ route('acceuil') }}">
+                <img src="img/logos/logo-1.png" alt="logo" class="logo-photo">
             </a>
             <button class="navbar-toggler" id="drawer" type="button">
                 <span class="fa fa-bars"></span>
@@ -110,25 +113,35 @@
                         </a>
                         
                     </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="{{ route('coproperty.view') }}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Co-proprieté
+                        </a>
+                        
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="{{route('property.view')}}" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Proprietés
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Listing Grid</a>
+                            @foreach ($type as $item)
+                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">{{$item->name}}</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="grid-view.html">Grid View 1</a></li>
-                                    <li><a class="dropdown-item" href="grid-view-2.html">Grid View 2</a></li>
-                                    <li><a class="dropdown-item" href="grid-view-3.html">Grid View 3</a></li>
+                                    <li><a class="dropdown-item" href="grid-view.html">Achat</a></li>
+                                    <li><a class="dropdown-item" href="grid-view-2.html">Location</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Listing List</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="list-view.html">List View 1</a></li>
-                                    <li><a class="dropdown-item" href="list-view-2.html">List View 2</a></li>
-                                    <li><a class="dropdown-item" href="list-view-3.html">List View 3</a></li>
-                                </ul>
-                            </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{route('property.view')}}" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Chambres
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink11">
+                            <li><a class="dropdown-item" href="agent-grid.html">Location</a></li>
+                            <li><a class="dropdown-item" href="agent-grid-2.html">Co-location</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -136,10 +149,10 @@
                             Services
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink11">
-                            <li><a class="dropdown-item" href="agent-grid.html">Agent Grid 1</a></li>
-                            <li><a class="dropdown-item" href="agent-grid-2.html">Agent Grid 2</a></li>
-                            <li><a class="dropdown-item" href="agent-list.html">Agent List 1</a></li>
-                            <li><a class="dropdown-item" href="agent-detail.html">Agent Details</a></li>
+                            @foreach ($service as $item)
+                                
+                            <li><a style="text-wrap: wrap;" class="dropdown-item" href="{{route('service.show', $item->id)}}">{{$item->title}}</a></li>
+                            @endforeach
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -157,7 +170,7 @@
 
                 <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
                     <li class="nav-item">
-                        <a href="submit-property.html" class="nav-link h-icon"><i class="fa fa-plus"></i> Publier un bien</a>
+                        <a href="{{route('property.create')}}" class="nav-link h-icon"><i class="fa fa-plus"></i> Publier un bien</a>
                     </li>
                 </ul>
             </div>
@@ -305,7 +318,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
-                <p class="copy">© 2024 <a href="#">CONDO.</a> tous les droits sont réserve.</p>
+                <p class="copy">© 2024 <a href="#">SCORE.</a> Tout droits réservée.</p>
             </div>
         </div>
     </div>

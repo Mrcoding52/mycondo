@@ -44,6 +44,9 @@
     <!--[if lt IE 9]><script  src="js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script  src="js/ie-emulation-modes-warning.js"></script>
 
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script  src="js/html5shiv.min.js"></script>
@@ -69,7 +72,7 @@
                             <input name="title" type="text" class="form-control" placeholder="Le titre de la description" aria-label="Full Name">
                         </div>
                         <div class="form-group clearfix">
-                            <textarea name="description" class="form-control" rows="3" placeholder="Minimum 300 caractères"></textarea>
+                            <textarea name="description" id="description" class="form-control" rows="3" placeholder="Minimum 300 caractères"></textarea>
                         </div>
                         <div class="form-group clearfix">
                             <input name="image" type="file" class="form-control" placeholder="Password" aria-label="Password">
@@ -124,6 +127,13 @@
     ga('create', 'UA-89110077-3', 'auto');
     ga('send', 'pageview');
 </script>
+<script>
+    CKEDITOR.replace('description');
+    CKEDITOR.replace('description', {
+        allowedContent: 'p h1 h2 h3 strong em; a[!href]; img[!src,width,height];'
+    });
+</script>
+
 
 </body>
 

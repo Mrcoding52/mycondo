@@ -14,6 +14,7 @@ class servicesController extends Controller
         $services = services::all();
         return view('services.services', compact('services'));
     }
+
     public function create()
     {
         return view('services.create');
@@ -24,8 +25,8 @@ class servicesController extends Controller
         // Valider les champs du formulaire
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'min:30'],
-            'image' => ['required', 'image', 'mimes:jpeg,jpg,png', 'max:2048'], // Fichier image
+            'description' => ['required', 'min:30'],
+            'image' => ['required', 'image', 'mimes:jpeg,jpg,png', 'max:4048'], // Fichier image
         ]);
 
         $services = new services();
@@ -42,9 +43,10 @@ class servicesController extends Controller
     }
 
     // Afficher un post spécifique (Show)
-    public function show(services $services)
+    public function show($id)
     {
-        return view('posts.show', compact('serivces')); // Affiche les détails d'un post spécifique
+        $servicees = services::find($id);
+        return view('services.show', compact('servicees')); // Affiche les détails d'un post spécifique
     }
 
     // Afficher le formulaire d'édition (Edit)

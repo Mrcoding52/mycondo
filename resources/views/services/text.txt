@@ -5,8 +5,8 @@ Message clé : "Les experts de Condo vous fourniront un travail impeccable et de
 2. Location, Achat et Vente de maisons et terrains
 Location :
 Description : Condo facilite la location de maisons et d’appartements en gérant les annonces et en aidant les propriétaires à trouver des locataires rapidement. De l’autre côté, les personnes en quête d’un logement peuvent utiliser les services de Condo pour trouver une résidence adaptée à leur budget.
-Achat :
-Description : Que vous recherchiez une maison, une villa ou un terrain, Condo vous propose un large éventail de biens immobiliers disponibles à la vente, répondant à divers besoins et budgets.
+Achat : 
+Description : Que vous recherchiez une maison, une villa ou un terrain, Condo vou   s propose un large éventail de biens immobiliers disponibles à la vente, répondant à divers besoins et budgets.
 Vente :
 Description : Condo offre un service d’estimation de la valeur des biens immobiliers et garantit une vente rapide grâce à une exposition optimale du bien.
 Message clé : "Condo vous accompagne dans vos démarches immobilières, qu'il s'agisse de location, d'achat ou de vente, pour un processus simple et rapide."

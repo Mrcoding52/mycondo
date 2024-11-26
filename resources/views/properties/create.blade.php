@@ -46,8 +46,9 @@
                                         <div class="form-group">
                                             <label>Statut de bail</label>
                                             <select class="selectpicker search-fields" name="statut">
-                                                <option>A louer</option>
-                                                <option>A vendre</option>
+                                                @foreach ($statut as $stat)
+                                                <option value="{{ $stat->id }}" >{{ $stat->name }}</option>
+                                                @endforeach
                                             </select>
                                             @error('statut')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -58,12 +59,9 @@
                                         <div class="form-group">
                                             <label>Type</label>
                                             <select class="selectpicker search-fields" name="type">
-                                                <option>Apartement</option>
-                                                <option>Maison</option>
-                                                <option>Parcelle</option>
-                                                <option>Commercial</option>
-                                                <option>Villa</option>
-                                                <option>Autres</option>
+                                                @foreach ($types as $type)
+                                                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                @endforeach
                                             </select>
                                             @error('type')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -71,12 +69,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <h3 class="heading-2">Galerie de la proprieté (La première image sera celle mise en avant)</h3>
-                            <div id="myDropZone" class="dropzone dropzone-design mb-50">
-                                <div class="dz-default dz-message"><span>Déposez vos images ici</span></div>
-                            </div>
-                            <input type="file" name="images" />
+                            </div>  
+                            <input type="file" name="images[]" multiple/>
+
                                 @error('images')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror

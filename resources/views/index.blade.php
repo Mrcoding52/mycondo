@@ -177,15 +177,18 @@
             <div class="item slide-box">
                 <div class="property-box">
                     <div class="property-thumbnail">
-                        <a href="single-property.html" class="property-img">
+                        <a href="{{ route('property.show', $propertie->id) }}" class="property-img">
                             <div class="listing-badges">
-                                <span class="featured">Featured</span>
+                                @if($propertie->status = 1)
+                                    <span class="featured">A louer</span>
+                                @else
+                                    <div class="listing-time opening">A vendre</div>
+                                @endif
                                 
-                            <div class="listing-time opening">For Sale</div>
                             </div>
                             <div class="price-ratings-box">
                                 <h4 class="price">
-                                    {{$propertie->price}} XOF<span>/mois</span>
+                                    {{$propertie->price}} XOF @if($propertie->status = 1)<span>/mois</span>@endif
                                 </h4>
                             </div>
                             <div class="property-overflow">
@@ -221,12 +224,12 @@
                         <div class="pull-left agent">
                             <div class="agent">
                                 <div class="user">
-                                    <a href="#">
-                                        <img src="img/avatar/avatar-1.jpg" alt="avatar">
+                                    <a href="{{ route('property.show', $propertie->id) }}">
+                                        <img src="img/logos/logo.png" alt="avatar">
                                     </a>
                                 </div>
                                 <div class="user-name">
-                                    <p><a href="#">Tom Paran</a></p>
+                                    <p><a href="#">Immo Condo</a></p>
                                 </div>
                             </div>
                         </div>
@@ -236,10 +239,11 @@
                     </div>
                 </div>
             </div>
+            @endforeach 
         </div>
 
              
-        @endforeach
+        
 
         <div class="text-center">
             <a href="{{route('property.view')}}" class="button btn-3">
@@ -249,5 +253,131 @@
     </div>
 </div>
 <!-- Featured Properties end -->
+
+<!-- Service section 2 start -->
+<div class="services-3 bg-grea-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 align-self-center wow fadeInLeft delay-04s">
+                <div class="text">
+                    <div class="main-title mt3">
+                        <p>Notre expertise</p>
+                        <h1>Pourquoi nous choisir ?</h1>
+                    </div>
+                    <P class="px">Nous sommes spécialisés dans le secteur immobilier, offrant une expertise unique pour répondre à tous vos besoins en matière de propriétés. Notre équipe combine innovation, expérience et engagement pour vous accompagner dans vos projets, qu’il s’agisse de location, d’achat ou de vente. Nous nous efforçons d’offrir des solutions sur mesure et une expérience client exceptionnelle.</P>
+                </div>
+            </div>
+            <div class="col-lg-8 wow fadeInRight delay-04s">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="service-info-2">
+                            <div class="number">1</div>
+                            <div class="icon">
+                                <i class="flaticon-apartment"></i>
+                            </div>
+                            <div class="service-info-2-ditels">
+                                <h3><a href="services-1.html">Apartements</a></h3>
+                                <P>Découvrez notre sélection exclusive d’appartements modernes et confortables adaptés à tous les styles de vie.</P>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="service-info-2">
+                            <div class="number">2</div>
+                            <div class="icon">
+                                <i class="flaticon-internet"></i>
+                            </div>
+                            <div class="service-info-2-ditels">
+                                <h3><a href="services-1.html">Maisons</a></h3>
+                                <P>Trouver la maison idéale n’a jamais été aussi simple. Nous proposons des maisons adaptées à tous les goûts : maisons traditionnelles, modernes ou écologiques.</P>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="service-info-2">
+                            <div class="number">3</div>
+                            <div class="icon">
+                                <i class="flaticon-vehicle"></i>
+                            </div>
+                            <div class="service-info-2-ditels">
+                                <h3><a href="services-1.html">Parking</a></h3>
+                                <P>Besoin d’un espace pour stationner ou stocker vos biens en toute sécurité ? Nos garages sont la solution parfaite.</P>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="service-info-2">
+                            <div class="number">4</div>
+                            <div class="icon">
+                                <i class="flaticon-coins"></i>
+                            </div>
+                            <div class="service-info-2-ditels">
+                                <h3><a href="services-1.html">Commercial</a></h3>
+                                <P>Développez votre activité dans un espace adapté grâce à nos locaux commerciaux.</P>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Service section 2 end -->
+
+
+<!-- Counters 3 strat -->
+<div class="counters-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 align-self-center wow fadeInLeft delay-04s">
+                <div class="heading">
+                    <P>Notre expérience</P>
+                    <h1>Plus de 10 ans d'experience</h1>
+                </div>
+            </div>
+            <div class="col-lg-7 wow fadeInRight delay-04s">
+                <div class="infos clearfix">
+                    <div class="counter-box b-button b-right d-flex">
+                        <div class="icon">
+                            <i class="flaticon-tag"></i>
+                        </div>
+                        <div class="detail">
+                            <h1 class="counter Starting">168</h1>
+                            <p>Proprietés vendues</p>
+                        </div>
+                    </div>
+                    <div class="counter-box b-button d-flex">
+                        <div class="icon">
+                            <i class="flaticon-business"></i>
+                        </div>
+                        <div class="detail">
+                            <h1 class="counter">96</h1>
+                            <p>Agents sur le terrain</p>
+                        </div>
+                    </div>
+                    <div class="counter-box b-right d-flex">
+                        <div class="icon">
+                            <i class="flaticon-people"></i>
+                        </div>
+                        <div class="detail">
+                            <h1 class="counter">32</h1>
+                            <p>Certifications</p>
+                        </div>
+                    </div>
+                    <div class="counter-box d-flex">
+                        <div class="icon">
+                            <i class="flaticon-people-1"></i>
+                        </div>
+                        <div class="detail">
+                            <h1 class="counter">197</h1>
+                            <p>Clients satisfaits</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Counters 3 end -->
     
 </x-base-component>

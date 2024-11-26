@@ -6,13 +6,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6">
-                <h1>Proprietés</h1>
+                <h1>Co-proprietés</h1>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="breadcrumb-area">
                     <ul>
                         <li><a href="{{ route('acceuil') }}">Acceuil</a></li>
-                        <li><span>/</span>Proprietés</li>
+                        <li><span>/</span>Co-proprietés</li>
                     </ul>
                 </div>
             </div>
@@ -29,19 +29,20 @@
 
                 <!-- Grid view start -->
                 <div class="row">
-                    @foreach ($properties as $item)
+                    @if ($coproperties->count() > 0)
+                    @foreach ($coproperties as $item)
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="property-box">
                             <div class="property-thumbnail">
                                 <a href="{{ route('property.show', $item->id) }}" class="property-img">
-                                    @if($item->status = 1)
+                                    @if($item->status = "A louer")
                                         <span class="featured">A louer</span>
                                     @else
                                         <div class="listing-time opening">A vendre</div>
                                     @endif
                                     <div class="price-ratings-box">
                                         <h4 class="price">
-                                            {{$item->price}} XOF @if($item->status = 1)<span>/mois</span>@endif
+                                            {{$item->price}} XOF @if($item->status = "A louer")<span>/mois</span>@endif
                                         </h4>
                                     </div>
                                     <div class="property-overflow">
@@ -94,6 +95,17 @@
                     </div>
                         
                     @endforeach
+                    @else
+                    <div class="col-lg-12 col-md-12">
+                        <div class="property-box">
+                            <div class="detail">
+                                <h1 class="title">
+                                    <a href="single-property.html">Aucune co-proprieté disponible</a>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                 </div>
                 <!-- Grid view end -->
 
