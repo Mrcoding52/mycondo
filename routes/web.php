@@ -40,10 +40,13 @@ Route::get('/co-proprietes', [propertiesController::class, 'coPropertyView'])->n
 
 Route::get('/proprietes.{id}', [propertiesController::class, 'show'])->name('property.show');
 
+Route::get('/properties/type/{id}', [propertiesController::class, 'showByType'])->name('property.showByType');
+
+Route::get('/properties/status/{id}', [propertiesController::class, 'showByStatus'])->name('property.showByStatus');
+
 Route::get('/publier-une-propriete', [propertiesController::class, 'create'])->name('property.create');
 
 Route::post('/ajouter-propriete', [propertiesController::class, 'store'])->name('property.store');
-
 
 
 

@@ -179,7 +179,7 @@
                     <div class="property-thumbnail">
                         <a href="{{ route('property.show', $propertie->id) }}" class="property-img">
                             <div class="listing-badges">
-                                @if($propertie->status = 1)
+                                @if($propertie->statut = 1)
                                     <span class="featured">A louer</span>
                                 @else
                                     <div class="listing-time opening">A vendre</div>
@@ -188,7 +188,7 @@
                             </div>
                             <div class="price-ratings-box">
                                 <h4 class="price">
-                                    {{$propertie->price}} XOF @if($propertie->status = 1)<span>/mois</span>@endif
+                                    {{$propertie->price}} XOF @if($propertie->statut = 1)<span>/mois</span>@endif
                                 </h4>
                             </div>
                             <div class="property-overflow">

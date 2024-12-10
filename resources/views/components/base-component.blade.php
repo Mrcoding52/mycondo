@@ -25,7 +25,7 @@
     <!-- Custom stylesheet -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/initial.css')}}">
-    <link rel="stylesheet" type="text/css" id="style_sheet" href="{{asset('css/skins/default.css')}}">
+    <link rel="stylesheet" type="text/css"  href="{{asset('css/skins/default.css')}}">
 
     <!-- Favicon icon -->
     <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon" >
@@ -62,7 +62,7 @@
         <div class="row align-items-center">
             <div class="col-lg-3 col-md-3">
                 <div class="top-logo">
-                    <a href="{{route('acceuil')}}"><img src="img/logos/logo.png" alt="logo"></a>
+                    <a href="{{route('acceuil')}}"><img src="/img/logos/logo.png" alt="logo"></a>
                 </div>
             </div>
             <div class="col-lg-9 col-md-9">
@@ -125,10 +125,11 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             @foreach ($type as $item)
-                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">{{$item->name}}</a>
+                            <li class="dropdown-submenu"><a class="dropdown-item " href="{{route('property.showByType',  $item->id)}}">{{$item->name}}</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="grid-view.html">Achat</a></li>
-                                    <li><a class="dropdown-item" href="grid-view-2.html">Location</a></li>
+                                    @foreach ($status as $item1)
+                                    <li><a class="dropdown-item" href="{{route('property.showByStatus',  $item1->id)}}">{{$item1->name}}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
                             @endforeach
@@ -187,7 +188,7 @@
     </div>
     <div class="sidebar-inner">
         <div class="sidebar-logo">
-            <img src="img/logos/logo.png" alt="sidebarlogo">
+            <img src="/img/logos/logo.png" alt="sidebarlogo">
         </div>
         <div class="sidebar-navigation">
             <h3 class="heading">Pages</h3>

@@ -29,8 +29,8 @@
 
                 <!-- Grid view start -->
                 <div class="row">
-                    @if ($properties->count() > 0)
-                    @foreach ($properties as $item)
+                    @if ($property->count() > 0)
+                    @foreach ($property as $item)
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="property-box">
                             <div class="property-thumbnail">
@@ -44,11 +44,11 @@
                                     </div>
                                     <div class="price-ratings-box">
                                         <h4 class="price">
-                                            {{$item->price}} XOF @if($item->status = 1)<span>/mois</span>@endif
+                                            {{$item->price}} XOF @if($item->statut = 1)<span>/mois</span>@endif
                                         </h4>
                                     </div>
                                     <div class="property-overflow">
-                                        <img class="d-block w-100" src="img/properties/properties-1.jpg" alt="properties">
+                                        <img class="d-block w-100" src="/img/properties/properties-1.jpg" alt="properties">
                                     </div>
                                 </a>
                             </div>

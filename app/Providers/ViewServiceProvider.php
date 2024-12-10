@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\ViewComposers\servComposer;
+use App\Http\ViewComposers\StatusComposer;
 use App\Http\ViewComposers\TypeComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -24,5 +25,6 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composer('*', servComposer::class);
         View::composer('*', TypeComposer::class);
+        View::composer('*', StatusComposer::class);
     }
 }
