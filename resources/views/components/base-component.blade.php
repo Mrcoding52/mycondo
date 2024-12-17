@@ -114,21 +114,40 @@
                         
                     </li>
                     <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="{{ route('coproperty.view') }}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Co-proprieté
-                        </a>
-                        
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="{{route('property.view')}}" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Proprietés
+                        <a class="nav-link dropdown-toggle" href="{{route('coproperty.view',  3)}}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Co - proprieté
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             @foreach ($type as $item)
                             <li class="dropdown-submenu"><a class="dropdown-item " href="{{route('property.showByType',  $item->id)}}">{{$item->name}}</a>
                                 <ul class="dropdown-menu">
-                                    @foreach ($status as $item1)
-                                    <li><a class="dropdown-item" href="{{route('property.showByStatus',  $item1->id)}}">{{$item1->name}}</a></li>
+                                    @foreach (array_slice($status->toArray(), 0, 2) as $item1)
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('property.filterByTypeAndStatus', ['type_id' => $item->id, 'status_id' => $item1['id']]) }}">
+                                            {{ $item1['name'] }}
+                                        </a>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            @endforeach
+                        </ul>
+                        
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{route('property.showByStatus', 1)}}" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Co - location
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @foreach (array_slice($type->toArray(), 0, 2) as $item)
+                            <li class="dropdown-submenu"><a class="dropdown-item " href="{{route('property.showByType',  $item['id'])}}">{{$item['name']}}</a>
+                                <ul class="dropdown-menu">
+                                    @foreach (array_slice($status->toArray(), 0, 2) as $item1)
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('property.filterByTypeAndStatus', ['type_id' => $item['id'], 'status_id' => $item1['id']]) }}">
+                                            {{ $item1['name'] }}
+                                        </a>
+                                    </li>
                                     @endforeach
                                 </ul>
                             </li>
@@ -138,12 +157,23 @@
                     
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="{{route('property.view')}}" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Chambres
+                            Proprietés
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink11">
-                            <li><a class="dropdown-item" href="agent-grid.html">Location</a></li>
-                            <li><a class="dropdown-item" href="agent-grid-2.html">Co-location</a></li>
-                        </ul>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @foreach (array_slice($type->toArray(), 1, 2) as $item)
+                            <li class="dropdown-submenu"><a class="dropdown-item " href="{{route('property.showByType',  $item['id'])}}">{{$item['name']}}</a>
+                                <ul class="dropdown-menu">
+                                    @foreach (array_slice($status->toArray(), 0, 2) as $item1)
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('property.filterByTypeAndStatus', ['type_id' => $item['id'], 'status_id' => $item1['id']]) }}">
+                                            {{ $item1['name'] }}
+                                        </a>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            @endforeach
+                        </ul>  
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="{{route('services')}}" id="navbarDropdownMenuLink11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -160,12 +190,6 @@
                         <a class="nav-link dropdown-toggle" href="{{route('about')}}" id="navbarDropdownMenuLink5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             A propos
                         </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Contact
-                        </a>
-                        
                     </li>
                 </ul>
 

@@ -22,8 +22,9 @@ class propertiesController extends Controller
         return view('properties.properties', compact('properties'));
     }
 
-    public function coPropertyView(){
-        $coproperties=properties::where('statut', 3)->get();
+    public function coPropertyView($id)
+    {
+        $coproperties = properties::where('statut', $id)->get();
         return view('properties.co-properties', compact('coproperties'));
     }
 
@@ -31,6 +32,17 @@ class propertiesController extends Controller
         $property = properties::find($id);
         return view('properties.show', compact('property'));
     }
+
+    public function filterPropertyByTypeAndStatus($type_id, $status_id)
+    {
+        // Récupérer les propriétés correspondant au type et statut donnés
+        $property = properties::where('type', $type_id)
+            ->where('statut', $status_id)
+            ->get();
+
+        return view('properties.showByStatus', compact('property'));
+    }
+
 
     public function showByType($id){
         $property = properties::where('type', $id)->get();
@@ -92,9 +104,12 @@ class propertiesController extends Controller
             'telephone.integer' => 'Le numéro de telephone doit être un nombre entier.',
             'telephone.min' => 'Le numéro de telephone doit être au moins 8 caractères.',
         
-            'images.required' => 'L\'image est requise.',
-            'images.mimes' => 'Le fichier doit être au format jpg, jpeg ou png.',
-            'images.max' => 'L\'image ne doit pas dépasser 1 Mo.',
+            'images.required' => 'Veuillez sélectionner au moins une image.',
+            'images.array' => 'Le champ images doit être un tableau.',
+            'images.max' => 'Vous ne pouvez télécharger que 4 images maximum.',
+            'images.*.image' => 'Chaque fichier doit être une image.',
+            'images.*.mimes' => 'Chaque image doit être au format jpg, jpeg ou png.',
+            'images.*.max' => 'Chaque image ne doit pas dépasser 3 Mo.',
         
             'adresse.required' => 'L\'adresse est requise.',
             
@@ -126,7 +141,7 @@ class propertiesController extends Controller
 
 
             foreach ($request->file('images') as $file) {
-
+                
                 $path = $file->store('uploads','public');
                 images::create([
                     'idPro'=> $properties->id,
@@ -137,80 +152,92 @@ class propertiesController extends Controller
         }
 
 
-        return redirect('/properties.create')->with('status', 'Article publié avec succès...');
+        return redirect()->route('property.create')->with('status', 'Article publié avec succès...');
+    }
+
+    public function edit($id)
+    {
+        $properties = properties::findOrFail($id);
+        $types = Types::all();
+        $statut = statuts::all();
+        return view('properties.edit', compact('properties', 'types', 'statut'));
     }
 
     public function update(Request $request, $id)
-{
-    $properties = properties::findOrFail($id); // Trouver le bien à modifier
+    {
+        $properties = properties::findOrFail($id);
 
-    // Validation des données
-    $request->validate([
-        'titre' => ['required', 'string', 'max:255'],
-        'statut' => ['required', 'string', 'max:255'],
-        'type' => ['required', 'string', 'max:255'],
-        'nChambre' => ['integer', 'min:0'],
-        'nDouche' => ['integer', 'min:0'],
-        'nGarage' => ['integer'],
-        'nPicsine' => ['integer'],
-        'price' => ['required', 'numeric'],
-        'telephone' => ['required', 'integer', 'min:8'],
-        'images' => 'nullable|array|max:4', // Les images sont facultatives lors de la mise à jour
-        'images.*' => 'image|mimes:jpg,jpeg,png|max:3024',
-        'adresse' => ['required', 'string', 'max:255'],
-        'details' => ['required', 'string'],
-    ], [
-        // Messages personnalisés pour les champs
-        'titre.required' => 'Le titre est requis.',
-        'titre.max' => 'Le titre ne doit pas dépasser 255 caractères.',
-        'statut.required' => 'Le statut est requis.',
-        'type.required' => 'Le type est requis.',
-        'nChambre.integer' => 'Le nombre de chambres doit être un nombre entier.',
-        'nDouche.integer' => 'Le nombre de douches doit être un nombre entier.',
-        'price.required' => 'Le prix est requis.',
-        'telephone.required' => 'Le numéro de téléphone est requis.',
-        'images.array' => 'Les images doivent être sous forme de tableau.',
-        'images.mimes' => 'Chaque fichier doit être au format jpg, jpeg ou png.',
-        'adresse.required' => 'L\'adresse est requise.',
-        'details.required' => 'Les détails sont requis.',
-    ]);
+        $request->validate([
+            'titre' => ['required', 'string', 'max:255'],
+            'statut' => ['required', 'string', 'max:255'],
+            'type' => ['required', 'string', 'max:255'],
+            'nChambre' => ['integer', 'min:0'],
+            'nDouche' => ['integer', 'min:0'],
+            'nGarage' => ['integer'],
+            'nPicsine' => ['integer'],
+            'price' => ['required', 'numeric'],
+            'telephone' => ['required', 'integer', 'min:8'],
+            'images' => 'nullable|array|max:4', // Les images sont facultatives lors de la mise à jour
+            'images.*' => 'image|mimes:jpg,jpeg,png|max:3024',
+            'adresse' => ['required', 'string', 'max:255'],
+            'details' => ['required', 'string'],
+        ], [
+            // Messages personnalisés pour les champs
+            'titre.required' => 'Le titre est requis.',
+            'titre.max' => 'Le titre ne doit pas dépasser 255 caractères.',
+            'statut.required' => 'Le statut est requis.',
+            'type.required' => 'Le type est requis.',
+            'nChambre.integer' => 'Le nombre de chambres doit être un nombre entier.',
+            'nDouche.integer' => 'Le nombre de douches doit être un nombre entier.',
+            'price.required' => 'Le prix est requis.',
+            'telephone.required' => 'Le numéro de téléphone est requis.',
+            
+            'images.required' => 'Veuillez sélectionner au moins une image.',
+            'images.array' => 'Le champ images doit être un tableau.',
+            'images.max' => 'Vous ne pouvez télécharger que 4 images maximum.',
+            'images.*.image' => 'Chaque fichier doit être une image.',
+            'images.*.mimes' => 'Chaque image doit être au format jpg, jpeg ou png.',
+            'images.*.max' => 'Chaque image ne doit pas dépasser 3 Mo.',
+            'adresse.required' => 'L\'adresse est requise.',
+            'details.required' => 'Les détails sont requis.',
+        ]);
 
-    // Mise à jour des champs
-    $properties->update([
-        'titre' => $request->titre,
-        'statut' => $request->statut,
-        'type' => $request->type,
-        'nChambre' => $request->nChambre,
-        'nDouche' => $request->nDouche,
-        'telephone' => $request->telephone,
-        'nGarage' => $request->nGarage,
-        'nPicsine' => $request->nPicsine,
-        'price' => $request->price,
-        'adresse' => $request->adresse,
-        'details' => $request->details,
-    ]);
+        // Mise à jour des champs
+        $properties->update([
+            'titre' => $request->titre,
+            'statut' => $request->statut,
+            'type' => $request->type,
+            'nChambre' => $request->nChambre,
+            'nDouche' => $request->nDouche,
+            'telephone' => $request->telephone,
+            'nGarage' => $request->nGarage,
+            'nPicsine' => $request->nPicsine,
+            'price' => $request->price,
+            'adresse' => $request->adresse,
+            'details' => $request->details,
+        ]);
 
-    // Gestion des images (si des images sont fournies)
-    if ($request->hasFile('images')) {
-        // Supprimer les anciennes images
-        foreach ($properties->images as $image) {
-            Storage::disk('public')->delete($image->images); // Supprime physiquement l'image
-            $image->delete(); // Supprime l'entrée dans la base de données
+        // Gestion des images (si des images sont fournies)
+        if ($request->hasFile('images')) {
+            // Supprimer les anciennes images
+            foreach ($properties->images as $image) {
+                Storage::disk('public')->delete($image->images); // Supprime physiquement l'image
+                $image->delete(); // Supprime l'entrée dans la base de données
+            }
+
+            // Enregistrer les nouvelles images
+            foreach ($request->file('images') as $file) {
+                $path = $file->store('uploads', 'public');
+                images::create([
+                    'idPro' => $properties->id,
+                    'images' => $path,
+                ]);
+            }
         }
 
-        // Enregistrer les nouvelles images
-        foreach ($request->file('images') as $file) {
-            $path = $file->store('uploads', 'public');
-            images::create([
-                'idPro' => $properties->id,
-                'images' => $path,
-            ]);
-        }
+        return redirect()->route('properties.edit', $id)
+            ->with('status', 'Article mis à jour avec succès.');
     }
-
-    return redirect()->route('properties.edit', $id)
-        ->with('status', 'Article mis à jour avec succès.');
-}
 
    
 }

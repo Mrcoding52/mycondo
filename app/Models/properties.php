@@ -13,12 +13,12 @@ class properties extends Model
         'titre',
         'statut',
         'type',
+        'price',
         'nChambre',
         'nDouche',
         'telephone',
         'nGarage',
         'nPicsine',
-        'images',
         'adresse',
         'details'
     ];
@@ -27,4 +27,9 @@ class properties extends Model
     {
         return $this->hasMany(images::class, 'idPro');
     }
+
+    public function statut()
+{
+    return $this->belongsTo(statuts::class);
+}
 }

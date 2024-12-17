@@ -179,7 +179,7 @@
                     <div class="property-thumbnail">
                         <a href="{{ route('property.show', $propertie->id) }}" class="property-img">
                             <div class="listing-badges">
-                                @if($propertie->statut = 1)
+                                @if($propertie->statut == 1)
                                     <span class="featured">A louer</span>
                                 @else
                                     <div class="listing-time opening">A vendre</div>
@@ -188,7 +188,7 @@
                             </div>
                             <div class="price-ratings-box">
                                 <h4 class="price">
-                                    {{$propertie->price}} XOF @if($propertie->statut = 1)<span>/mois</span>@endif
+                                    {{$propertie->price}} XOF @if($propertie->statut == 1)<span>/mois</span>@endif
                                 </h4>
                             </div>
                             <div class="property-overflow">
@@ -297,11 +297,11 @@
                         <div class="service-info-2">
                             <div class="number">3</div>
                             <div class="icon">
-                                <i class="flaticon-vehicle"></i>
+                                <i class="flaticon-internet"></i>
                             </div>
                             <div class="service-info-2-ditels">
-                                <h3><a href="services-1.html">Parking</a></h3>
-                                <P>Besoin d’un espace pour stationner ou stocker vos biens en toute sécurité ? Nos garages sont la solution parfaite.</P>
+                                <h3><a href="services-1.html">Co-proprieté</a></h3>
+                                <P>Permettre une gestion optimisée des grandes propriétés en copropriété, que ce soit pour alléger les charges fiscales.</P>
                             </div>
                         </div>
                     </div>
@@ -309,11 +309,11 @@
                         <div class="service-info-2">
                             <div class="number">4</div>
                             <div class="icon">
-                                <i class="flaticon-coins"></i>
+                                <i class="fi fi-tr-bell-concierge"></i>
                             </div>
                             <div class="service-info-2-ditels">
-                                <h3><a href="services-1.html">Commercial</a></h3>
-                                <P>Développez votre activité dans un espace adapté grâce à nos locaux commerciaux.</P>
+                                <h3><a href="services-1.html">Conciergerie</a></h3>
+                                <P> Nous offrons une assistance personnalisée pour répondre à vos besoins en tant que propriétaire ou locataire.</P>
                             </div>
                         </div>
                     </div>

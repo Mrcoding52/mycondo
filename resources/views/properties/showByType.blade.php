@@ -36,7 +36,7 @@
                             <div class="property-thumbnail">
                                 <a href="{{ route('property.show', $item->id) }}" class="property-img">
                                     <div class="listing-badges">
-                                        @if($property->statut = 1)
+                                        @if(isset($property) && $property->statut = 1)
                                             <span class="featured">A louer</span>
                                         @else
                                             <div class="listing-time opening">A vendre</div>
@@ -136,43 +136,7 @@
                         <h3 class="sidebar-title">Recherche</h3>
                         <form method="GET">
                             <div class="form-group">
-                                <select class="selectpicker search-fields" name="all-status">
-                                    <option>A louer</option>
-                                    <option>A vendre</option>
-                                    <option>Co-proprieté</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="all-type">
-                                    @foreach ($type as $item)
-                                    <option value="{{$item->id}}">{{$item->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <select class="selectpicker search-fields" name="bedrooms">
-                                            <option>Chambres</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <select class="selectpicker search-fields" name="bathroom">
-                                            <option>Douches</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                <input type="text" class="form-control" placeholder="Rechercher">
                             </div>
                             <div class="form-group mb-0">
                                 <button class="btn-4 btn-round-3 w-100">Rechercher</button>

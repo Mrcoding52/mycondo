@@ -36,7 +36,7 @@ Route::get('/', [propertiesController::class, 'index'])->name('acceuil');
 
 Route::get('/proprietes', [propertiesController::class, 'viewProperty'])->name('property.view');
 
-Route::get('/co-proprietes', [propertiesController::class, 'coPropertyView'])->name('coproperty.view');
+Route::get('/co-proprietes/{id}', [propertiesController::class, 'coPropertyView'])->name('coproperty.view');
 
 Route::get('/proprietes.{id}', [propertiesController::class, 'show'])->name('property.show');
 
@@ -44,7 +44,15 @@ Route::get('/properties/type/{id}', [propertiesController::class, 'showByType'])
 
 Route::get('/properties/status/{id}', [propertiesController::class, 'showByStatus'])->name('property.showByStatus');
 
+Route::get('/properties/type/{type_id}/status/{status_id}', [propertiesController::class, 'filterPropertyByTypeAndStatus'])->name('property.filterByTypeAndStatus');
+
 Route::get('/publier-une-propriete', [propertiesController::class, 'create'])->name('property.create');
+
+Route::get('/modifier-une-propriete/{id}', [propertiesController::class, 'edit'])->name('property.edit');
+
+Route::put('/modifier-une-propriete/{id}', [propertiesController::class, 'update'])->name('property.update');
+
+Route::delete('/supprimer-une-propriete/{id}', [propertiesController::class, 'destroy'])->name('property.destroy');
 
 Route::post('/ajouter-propriete', [propertiesController::class, 'store'])->name('property.store');
 
@@ -57,6 +65,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/publier-une-propriete', [propertiesController::class, 'create'])->name('property.create');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

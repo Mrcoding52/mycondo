@@ -102,6 +102,88 @@
 </div>
 <!-- About real estate end -->
 
+<!-- Contact 1 start -->
+<div class="contact-1 content-area-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5">
+                <div class="contact-info">
+                    <h3 class="heading">Suivez-nous ici</h3>
+                    <p class="text">Collaboratively administrate channels whereas virtual. Objectively seize scalable metrics whereas proactive e-services.</p>
+                    <div class="contact-info-box d-flex mb-3">
+                        <i class="flaticon-technology-1"></i>
+                        <div class="detail">
+                            <h5 class="mt-0">Phone:</h5>
+                            <p><a href="tel:0477-0477-8556-552">0477 8556 552</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-info-box d-flex mb-3">
+                        <i class="flaticon-envelope"></i>
+                        <div class="detail">
+                            <h5 class="mt-0">Email:</h5>
+                            <p><a href="#">info@themevessel.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-info-box d-flex mb-3">
+                        <i class="flaticon-globe"></i>
+                        <div class="detail">
+                            <h5 class="mt-0">Web:</h5>
+                            <p><a href="#">info@themevessel.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-info-box d-flex">
+                        <i class="flaticon-technology-2"></i>
+                        <div class="detail">
+                            <h5 class="mt-0">Fax:</h5>
+                            <p><a href="#">0477 8556 552</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-7">
+                <div class="contact-inner">
+                    <h3 class="heading">Laisser un message.</h3>
+                    <form id="contact_form" action="https://storage.googleapis.com/theme-vessel-items/checking-sites/real-house-2-html/HTML/main/index.html" method="GET" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group name">
+                                    <input type="text" name="name" class="form-control" placeholder="Name" aria-label="Full Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group email">
+                                    <input type="email" name="email" class="form-control" placeholder="Email Address" aria-label="Email Address">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group subject">
+                                    <input type="text" name="subject" class="form-control" placeholder="Subject" aria-label="Subject">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group number">
+                                    <input type="text" name="phone" class="form-control" placeholder="Phone" aria-label="Phone Number">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group message">
+                                    <textarea  class="form-control" name="message" placeholder="Write message" aria-label="Write message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="send-btn">
+                                    <button type="submit" class="btn-4 btn-round-3">Send Message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact 1 end -->
+
 
 
 

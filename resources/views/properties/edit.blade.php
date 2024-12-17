@@ -5,13 +5,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6">
-                <h1>Publier une proprieté</h1>
+                <h1>Modifier une proprieté</h1>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="breadcrumb-area">
                     <ul>
                         <li><a href="index.html">Acceuil</a></li>
-                        <li><span>/</span>Publier une proprieté</li>
+                        <li><span>/</span>Modifier une proprieté</li>
                     </ul>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                 
                 <div class="col-md-12">
                     <div class="submit-address">
-                        <form method="POST" action="{{ route('property.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('property.update') }}" enctype="multipart/form-data">
                             @csrf
                             <h3 class="heading-2">Informations de base</h3>
                             <div class="search-contents-sidebar mb-30">
@@ -36,7 +36,7 @@
                                     <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group propertytitle">
                                             <label for="inputpropertytitle1" class="form-label">Titre de la proprité</label>
-                                            <input type="text" name="titre" class="form-control" id="inputpropertytitle1" placeholder="Titre de la proprieté">
+                                            <input type="text" name="titre" value="{{ $properties->titre }}" class="form-control" id="inputpropertytitle1" placeholder="Titre de la proprieté">
                                             @error('titre')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -97,7 +97,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group address">
                                         <label for="inputAddress1" class="form-label">Adresse</label>
-                                        <input type="text" name="adresse" class="form-control" id="inputAddress1" placeholder="Pays-Département-Ville/Village-Quartier-Rue-Maison">
+                                        <input type="text" name="adresse" value="{{ $properties->adresse }}" class="form-control" id="inputAddress1" placeholder="Pays-Département-Ville/Village-Quartier-Rue-Maison">
                                         @error('adresse')
                                                 <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -108,7 +108,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group address">
                                         <label for="inputAddress1" class="form-label">Prix</label>
-                                        <input type="number" name="price" class="form-control" id="inputAddress1" placeholder="Prix">
+                                        <input type="number" name="price" value="{{ $properties->price }}" class="form-control" id="inputAddress1" placeholder="Prix">
                                         @error('price')
                                                 <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -120,7 +120,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group mb-0">
                                         <label>Informations détaillée</label>
-                                        <textarea name="details" class="form-control" rows="3" placeholder="Minimum 300 caractères"></textarea>
+                                        <textarea name="details" class="form-control" rows="3" placeholder="Minimum 300 caractères"> {{ $properties->details }}</textarea>
                                         @error('details')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -162,7 +162,7 @@
                                 <div class="col-lg-4 col-md-6 col-sm-12">
                                     <div class="form-group phone">
                                         <label for="inputphone1" class="form-label">Télephone (Whatsapp recommandé)</label>
-                                        <input type="text" name="telephone" class="form-control" id="inputphone1" placeholder="Numéro de téléphone">
+                                        <input type="text" name="telephone" value="{{ $properties->telephone }}" class="form-control" id="inputphone1" placeholder="Numéro de téléphone">
                                         @error('telephone')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -194,7 +194,7 @@
                             <div class="row">
                                 
                                 <div class="col-lg-4 col-md-12 col-sm-12">
-                                    <button type="submit" class="btn-4 btn-round-3">Publier la proprieté</button>
+                                    <button type="submit" class="btn-4 btn-round-3">Modifier la proprieté</button>
                                 </div>
                             </div>
                         </form>

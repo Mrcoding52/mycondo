@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class statuts extends Model
 {
     use HasFactory;
+
 }
