@@ -1,49 +1,52 @@
-
 <!DOCTYPE html>
 <html lang="Fr">
 
-<!-- Mirrored from storage.googleapis.com/theme-vessel-items/checking-sites/real-house-2-html/HTML/main/signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Oct 2024 16:21:35 GMT -->
+<!-- Mirrored from storage.googleapis.com/theme-vessel-items/checking-sites/real-house-2-html/HTML/main/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Oct 2024 16:20:32 GMT -->
 <head>
-    <title>{{ config('app.name') }} | Modifier un service</title>
+    <title>{{config('app.name')}} | Modifier un service</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
 
- <!-- External CSS libraries -->
- <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
- <link rel="stylesheet" type="text/css" href="{{asset('css/animate.min.css')}}">
- <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-submenu.css')}}">
- <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-select.min.css')}}">
- <link rel="stylesheet" href="{{asset('css/leaflet.css')}}" type="text/css">
- <link rel="stylesheet" href="{{asset('css/map.css')}}" type="text/css">
- <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome/css/font-awesome.min.css')}}">
- <link type="text/css" rel="stylesheet" href="{{asset('fonts/bootstrap-icons/bootstrap-icons.css')}}">
- <link rel="stylesheet" type="text/css" href="{{asset('fonts/flaticon/font/flaticon.css')}}">
- <link rel="stylesheet" type="text/css" href="{{asset('fonts/linearicons/style.css')}}">
- <link rel="stylesheet" type="text/css"  href="{{asset('css/jquery.mCustomScrollbar.css')}}">
- <link rel="stylesheet" type="text/css"  href="{{asset('css/dropzone.css')}}">
- <link rel="stylesheet" type="text/css"  href="{{asset('css/slick.css')}}">
+    <!-- External CSS libraries -->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/animate.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-submenu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/leaflet.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/map.css')}}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome/css/font-awesome.min.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{asset('fonts/bootstrap-icons/bootstrap-icons.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/flaticon/font/flaticon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/linearicons/style.css')}}">
+    <link rel="stylesheet" type="text/css"  href="{{asset('css/jquery.mCustomScrollbar.css')}}">
+    <link rel="stylesheet" type="text/css"  href="{{asset('css/dropzone.css')}}">
+    <link rel="stylesheet" type="text/css"  href="{{asset('css/slick.css')}}">
 
- <!-- Custom stylesheet -->
- <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
- <link rel="stylesheet" type="text/css" href="{{asset('css/initial.css')}}">
- <link rel="stylesheet" type="text/css" id="style_sheet" href="{{asset('css/skins/default.css')}}">
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/initial.css')}}">
+    <link rel="stylesheet" type="text/css"  href="{{asset('css/skins/default.css')}}">
 
- <!-- Favicon icon -->
- <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon" >
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon" >
+    <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css')}}" />
 
- <!-- Google fonts -->
- <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700">
- <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
- <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
- <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <!-- Google fonts -->
+    <link rel="stylesheet" type="text/css" href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700')}}">
+    <link href="{{asset('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600&amp;display=swap')}}" rel="stylesheet">
+    <link href="{{asset('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&amp;display=swap')}}" rel="stylesheet">
+    <link href="{{asset('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;300;400;500;600;700;800;900&amp;display=swap')}}" rel="stylesheet">
 
- <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
- <link rel="stylesheet" type="text/css" href="{{asset('css/ie10-viewport-bug-workaround.css')}}">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/ie10-viewport-bug-workaround.css')}}">
 
- <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
- <!--[if lt IE 9]><script  src="js/ie8-responsive-file-warning.js"></script><![endif]-->
- <script  src="{{asset('js/ie-emulation-modes-warning.js')}}"></script>
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script  src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script  src="{{asset('js/ie-emulation-modes-warning.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -61,7 +64,7 @@
             <div class="col-lg-6 align-self-center pad-0 form-section">
                 <div class="form-inner">
                     <a href="{{route('acceuil')}}" class="logo">
-                        <img src="{{asset('img/logos/logo.png')}}" alt="logo">
+                        <h3>Retour à l'acceuil</h3>
                     </a>
                     <h3>Modifier un service</h3>
                     <form action="{{ route('service.update', ['id' => $services->id]) }}" method="POST" enctype="multipart/form-data">
@@ -125,6 +128,13 @@
     })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
     ga('create', 'UA-89110077-3', 'auto');
     ga('send', 'pageview');
+</script>
+
+<script>
+    CKEDITOR.replace('description');
+    CKEDITOR.replace('description', {
+        allowedContent: 'p h1 h2 h3 strong em; a[!href]; img[!src,width,height];'
+    });
 </script>
 
 </body>

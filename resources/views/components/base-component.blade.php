@@ -43,6 +43,8 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script  src="js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script  src="{{asset('js/ie-emulation-modes-warning.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 
@@ -66,6 +68,31 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-9">
+
+                @if (session('status'))
+                    <div  id="statusAlert" class="alert alert-success" role="alert">
+                        {{session('status')}}
+                    </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            // Attendre 8 secondes avant de commencer à faire disparaître l'alerte
+                            setTimeout(function() {
+                                const alert = document.getElementById('statusAlert');
+                                let opacity = 1; // niveau d'opacité initial
+
+                                const fadeOutInterval = setInterval(function() {
+                                    if (opacity <= 0.1) {
+                                        clearInterval(fadeOutInterval);
+                                        alert.style.display = 'none'; // cacher l'élément
+                                    }
+                                    alert.style.opacity = opacity;
+                                    opacity -= 0.05; // diminuer l'opacité
+                                }, 50); // intervalle de temps pour réduire l'opacité
+                            }, 8000); // attendre 8 secondes avant de commencer à réduire l'opacité
+                        });
+                    </script>
+                @endif
                 <div class="top-header-inner">
                     {{--<div class="top-contact-item">
                         <i class="bi bi-geo-alt"></i>
@@ -194,9 +221,9 @@
                 </ul>
 
                 <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-                    <li class="nav-item">
-                        <a href="{{route('property.create')}}" class="nav-link h-icon"><i class="fa fa-plus"></i> Publier un bien</a>
-                    </li>
+                    {{-- <li class="nav-item">
+                        <a href="{{route('property.create')}}" class="nav-link h-icon"> Publier un bien</a>
+                    </li> --}}
                 </ul>
             </div>
         </nav>
@@ -267,6 +294,7 @@
         </div>
     </div>
 </nav>
+
 <!-- Sidenav end -->
 
 
@@ -303,17 +331,13 @@
             </div>
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                 <div class="footer-item">
-                    <h4>Types de proprietés</h4>
+                    <h4>Types de biens</h4>
                     <ul class="links">
+                        @foreach ($type as $item)
                         <li>
-                            <a>Apartement</a>
+                            <a href="{{route('property.showByType', $item->id)}}">{{$item->name}}</a>
                         </li>
-                        <li>
-                            <a>Maison</a>
-                        </li>
-                        <li>
-                            <a>Parcelle</a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

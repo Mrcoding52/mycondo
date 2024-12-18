@@ -28,7 +28,8 @@
                 
                 <div class="col-md-12">
                     <div class="submit-address">
-                        <form method="POST" action="{{ route('property.update') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('property.update', ['id' => $properties->id]) }}" enctype="multipart/form-data">
+                            @method('PUT')
                             @csrf
                             <h3 class="heading-2">Informations de base</h3>
                             <div class="search-contents-sidebar mb-30">
@@ -120,7 +121,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group mb-0">
                                         <label>Informations détaillée</label>
-                                        <textarea name="details" class="form-control" rows="3" placeholder="Minimum 300 caractères"> {{ $properties->details }}</textarea>
+                                        <textarea name="details" class="form-control" rows="3" id="details" placeholder="Minimum 300 caractères"> {{ $properties->details }}</textarea>
                                         @error('details')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -169,27 +170,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <h3 class="heading-2">Autres détails (facultatif)</h3>
-                            <div class="row mb-40">
-                                <div class="col-lg-12">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-sm-6">
-                                            <div class="checkbox checkbox-theme checkbox-circle">
-                                                <input name="nPiscine" value="1" id="checkbox1" type="checkbox">
-                                                <label for="checkbox1">
-                                                    Piscine
-                                                </label>
-                                            </div>
-                                            <div class="checkbox checkbox-theme checkbox-circle">
-                                                <input name="nGarage" value="1" id="checkbox2" type="checkbox">
-                                                <label for="checkbox2">
-                                                    Parking
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="row">
                                 
@@ -205,5 +185,11 @@
     </div>
 </div>
 <!-- Submit Property end -->
+<script>
+    CKEDITOR.replace('details');
+    CKEDITOR.replace('details');, {
+        allowedContent: 'p h1 h2 h3 strong em; a[!href]; img[!src,width,height];'
+    });
+</script>
 
 </x-base-component>

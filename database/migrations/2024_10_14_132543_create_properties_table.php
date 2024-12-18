@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('co-location')->nullable();
             $table->double('price');
             $table->string('adresse');
-            $table->string('details');
+            $table->text('details');
             $table->timestamps();
         });
     }

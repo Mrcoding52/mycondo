@@ -13,12 +13,18 @@ use Illuminate\Support\Facades\Storage;
 class propertiesController extends Controller
 {
     public function  index(){
-        $properties=properties::all();
+        $properties=properties::simplePaginate(4);
         return view('index', compact('properties'));
     }
 
+    public function search(Request $request){
+        $search = $request->input('search');
+        $properties = properties::where('adresse', 'like', '%' . $search . '%')->get();
+        return view('properties.properties', compact('properties'));
+    }
+
     public function viewProperty(){
-        $properties=properties::all();
+        $properties=properties::simplePaginate(4);
         return view('properties.properties', compact('properties'));
     }
 
@@ -235,8 +241,15 @@ class propertiesController extends Controller
             }
         }
 
-        return redirect()->route('properties.edit', $id)
+        return redirect()->route('property.edit', $id)
             ->with('status', 'Article mis à jour avec succès.');
+    }
+
+    public function destroy($id)
+    {
+        $properties = properties::findOrFail($id);
+        $properties->delete();
+        return redirect()->route('dashboard')->with('status', 'Article supprimé avec succès...');
     }
 
    

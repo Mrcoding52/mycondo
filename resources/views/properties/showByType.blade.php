@@ -131,18 +131,18 @@
             </div>
             <div class="col-lg-4 col-md-12">
                 <div class="sidebar-right">
-                    <!-- Advanced search start -->
-                    <div class="sidebar widget advanced-search">
+                     <!-- Advanced search start -->
+                     <div class="sidebar widget advanced-search">
                         <h3 class="sidebar-title">Recherche</h3>
-                        <form method="GET">
+                        <form method="GET" action="{{ route('property.search') }}">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Rechercher">
+                                <input type="text" name="search" class="form-control" placeholder="Rechercher">
                             </div>
                             <div class="form-group mb-0">
-                                <button class="btn-4 btn-round-3 w-100">Rechercher</button>
+                                <button type="submit" class="btn-4 btn-round-3 w-100">Rechercher</button>
                             </div>
                         </form>
-                    </div>
+                    {{-- </div>
                     <div class="posts-by-category widget">
                         <h3 class="sidebar-title">Types</h3>
                         <ul class="list-unstyled list-cat">
@@ -152,7 +152,7 @@
                             <li><a href="#">Commercial <span>(19)</span></a></li>
                             <li><a href="#">Villa <span>(19)</span></a> </li>
                             <li><a href="#">Autres <span>(22) </span></a></li>
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </div>

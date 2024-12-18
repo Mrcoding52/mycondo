@@ -83,65 +83,19 @@
                                             <div class="search-section-area">
                                                 <div class="search-area-inner">
                                                     <div class="search-contents">
-                                                        <form method="GET">
+                                                        <form method="GET" action="{{route('property.search')}}">
                                                             <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    <h5>Critères de recherche</h5>
-                                                                </div>
-                                                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                                                <div class="col-lg-12 col-md-12 col-sm-12">
                                                                     <div class="form-group">
-                                                                        <input type="text" name="name" class="form-control" placeholder="Entrez un mot clé">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                                                    <div class="form-group">
-                                                                        <select class="selectpicker search-fields" name="Type de propriété">
-                                                                            <option>Appartement</option>
-                                                                            <option>Maison</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                                                    <div class="form-group">
-                                                                        <select class="selectpicker search-fields" name="location" placeholder="Type de bail">
-                                                                            <option>Achat</option>
-                                                                            <option>Location</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                                                    <div class="range-slider">
-                                                                        <input type="range" data-min="0" data-max="150000" data-unit="XOF" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false">
-                                                                        <div class="clearfix">0 XOF -150000 XOF</div>
+                                                                        <input type="text" name="search" class="form-control" placeholder="Entrez une adresse">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="row mb-20">
-                                                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                                                    <div class="form-group">
-                                                                        <select class="selectpicker search-fields" name="bedrooms" placeholder="Nombre de chambres">
-                                                                            
-                                                                            <option>1</option>
-                                                                            <option>2</option>
-                                                                            <option>3</option>
-                                                                            <option>4</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                                                    <div class="form-group">
-                                                                        <select class="selectpicker search-fields" name="bathrooms" placeholder="Nombre de salles de bain">
-                                                                            <option>1</option>
-                                                                            <option>2</option>
-                                                                            <option>3</option>
-                                                                            <option>4</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
                                                                 
                                                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                                                     <div class="form-group">
-                                                                        <button class="search-button">Rechercher</button>
+                                                                        <button type="submit" class="search-button">Rechercher</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -332,7 +286,7 @@
             <div class="col-lg-5 align-self-center wow fadeInLeft delay-04s">
                 <div class="heading">
                     <P>Notre expérience</P>
-                    <h1>Plus de 10 ans d'experience</h1>
+                    <h1>Plus de 4 ans d'experience</h1>
                 </div>
             </div>
             <div class="col-lg-7 wow fadeInRight delay-04s">
@@ -342,7 +296,7 @@
                             <i class="flaticon-tag"></i>
                         </div>
                         <div class="detail">
-                            <h1 class="counter Starting">168</h1>
+                            <h1 class="counter Starting">16</h1>
                             <p>Proprietés vendues</p>
                         </div>
                     </div>
@@ -351,7 +305,7 @@
                             <i class="flaticon-business"></i>
                         </div>
                         <div class="detail">
-                            <h1 class="counter">96</h1>
+                            <h1 class="counter">13</h1>
                             <p>Agents sur le terrain</p>
                         </div>
                     </div>
@@ -360,7 +314,7 @@
                             <i class="flaticon-people"></i>
                         </div>
                         <div class="detail">
-                            <h1 class="counter">32</h1>
+                            <h1 class="counter">7</h1>
                             <p>Certifications</p>
                         </div>
                     </div>
@@ -369,7 +323,7 @@
                             <i class="flaticon-people-1"></i>
                         </div>
                         <div class="detail">
-                            <h1 class="counter">197</h1>
+                            <h1 class="counter">22</h1>
                             <p>Clients satisfaits</p>
                         </div>
                     </div>
