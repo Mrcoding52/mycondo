@@ -6,26 +6,13 @@
 <div class="details-banner">
     <div class="container-fluid">
         <div class="featured-slider row slide-box-btn slider" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
-            <div class="slide slide-box">
-                <div class="banner-img">
-                    <img src="img/properties/properties-1.jpg" alt="banner" class="img-fluid bp">
+            @foreach ($property->images as $image)
+                <div class="slide slide-box">
+                    <div class="banner-img">
+                        <img src="{{ asset('storage/'.$image->images) }}" alt="banner" class="img-fluid bp">
+                    </div>
                 </div>
-            </div>
-            <div class="slide slide-box">
-                <div class="banner-img">
-                    <img src="img/properties/properties-2.jpg" alt="banner" class="img-fluid bp">
-                </div>
-            </div>
-            <div class="slide slide-box">
-                <div class="banner-img">
-                    <img src="img/properties/properties-3.jpg" alt="banner" class="img-fluid bp">
-                </div>
-            </div>
-            <div class="slide slide-box">
-                <div class="banner-img">
-                    <img src="img/properties/properties-4.jpg" alt="banner" class="img-fluid bp">
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
@@ -39,15 +26,15 @@
                 <div class="col-xl-3 col-lg-4 col-md-4">
                     <div class="photo">
                         <div class="home">
-                            <img class="img-fluid" src="img/img-4.png" alt="properties">
+                            <img class="img-fluid" src="/img/img-4.png" alt="properties">
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-8 col-md-8">
                     <div class="content">
-                        <div class="for-sale">{{$property->statut}}</div>
+                        <div class="for-sale">@if($property->type == 1) à louer @else à vendre @endif </div>
                         <h2>{{$property->titre}} <span class="pull-right"> {{$property->price}} Fcfa<small>/mois</small></span></h2>
-                        <ul class="facilities-list clearfix">
+                        {{-- <ul class="facilities-list clearfix">
                             <li>
                                 <i class="flaticon-furniture"></i> 3 Bedrooms
                             </li>
@@ -59,7 +46,7 @@
                             </li>
                             <li>
                                 <i class="flaticon-vehicle"></i> 1 Garage
-                            </li>
+                            </li> --}}
                         </ul>
                         <p><i class="fa fa-map-marker"> </i>  {{$property->adresse}}</p>
                     </div>
@@ -81,8 +68,11 @@
                         Description
                     </h3>
                     <p>{!!$property->details!!}</p>
+
+                    <h3>Contact:  {{$property->telephone}} </h3>
                 </div>
                 <!-- Properties description end -->
+
             </div>
         </div>
     </div>

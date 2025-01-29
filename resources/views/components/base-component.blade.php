@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- External CSS libraries -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/animate.min.css')}}">
@@ -44,6 +46,8 @@
     <!--[if lt IE 9]><script  src="js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script  src="{{asset('js/ie-emulation-modes-warning.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
     <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
@@ -112,7 +116,7 @@
                         <i class="bi bi-telephone-inbound"></i>
                         <div class="content">
                             <p>Contact</p>
-                            <a href="tel:+55-4XX-634-7071">+229 4XX-634-781</a>
+                            <a href="tel:+55-4XX-634-7071">+229 0155777171</a>
                         </div>
                     </div>
                 </div>
@@ -147,7 +151,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             @foreach ($type as $item)
                             <li class="dropdown-submenu"><a class="dropdown-item " href="{{route('property.showByType',  $item->id)}}">{{$item->name}}</a>
-                                <ul class="dropdown-menu">
+                                {{-- <ul class="dropdown-menu">
                                     @foreach (array_slice($status->toArray(), 0, 2) as $item1)
                                     <li>
                                         <a class="dropdown-item" href="{{ route('property.filterByTypeAndStatus', ['type_id' => $item->id, 'status_id' => $item1['id']]) }}">
@@ -155,7 +159,7 @@
                                         </a>
                                     </li>
                                     @endforeach
-                                </ul>
+                                </ul> --}}
                             </li>
                             @endforeach
                         </ul>
@@ -168,7 +172,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             @foreach (array_slice($type->toArray(), 0, 2) as $item)
                             <li class="dropdown-submenu"><a class="dropdown-item " href="{{route('property.showByType',  $item['id'])}}">{{$item['name']}}</a>
-                                <ul class="dropdown-menu">
+                                {{-- <ul class="dropdown-menu">
                                     @foreach (array_slice($status->toArray(), 0, 2) as $item1)
                                     <li>
                                         <a class="dropdown-item" href="{{ route('property.filterByTypeAndStatus', ['type_id' => $item['id'], 'status_id' => $item1['id']]) }}">
@@ -176,7 +180,7 @@
                                         </a>
                                     </li>
                                     @endforeach
-                                </ul>
+                                </ul> --}}
                             </li>
                             @endforeach
                         </ul>
@@ -324,7 +328,7 @@
                             <a href="mailto:sales@hotelempire.com">info@gmail.com</a>
                         </li>
                         <li>
-                            <a href="tel:+55-417-634-7071">+229 347-465-659</a>
+                            <a href="tel:+55-417-634-7071">+229 0155777171</a>
                         </li>
                     </ul>
                 </div>

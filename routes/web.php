@@ -5,6 +5,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\propertiesController;
 use App\Http\Controllers\servicesController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -31,13 +33,15 @@ Route::get('/proprietes', [propertiesController::class, 'viewProperty'])->name('
 
 Route::get('/co-proprietes/{id}', [propertiesController::class, 'coPropertyView'])->name('coproperty.view');
 
-Route::get('/proprietes.{id}', [propertiesController::class, 'show'])->name('property.show');
+Route::get('/proprietes/{id}', [propertiesController::class, 'show'])->name('property.show');
 
 Route::get('/recherche', [propertiesController::class, 'search'])->name('property.search');
 
 Route::get('/properties/type/{id}', [propertiesController::class, 'showByType'])->name('property.showByType');
 
 Route::get('/properties/status/{id}', [propertiesController::class, 'showByStatus'])->name('property.showByStatus');
+
+Route::get('/properties/adresse/{adresse}', [propertiesController::class, 'showByLocation'])->name('property.showByLocation');
 
 Route::get('/properties/type/{type_id}/status/{status_id}', [propertiesController::class, 'filterPropertyByTypeAndStatus'])->name('property.filterByTypeAndStatus');
 
@@ -64,7 +68,24 @@ Route::middleware('auth')->group(function () {
 
     //Routes for properties
 
+    Route::get('/generate-qrcode/{address}', function ($address) {
+        $url = url("localhost:8000/properties/adresse?address={$address}");
+        $qrCode = QrCode::size(200)->generate($url);
+    
+        // Enregistrer le QR code sur le disque
+        $path = "qrcodes/{$address}.png";
+        Storage::put($path, $qrCode);
+    
+        // Renvoyer l'URL de l'image enregistrée
+        return response()->json(['url' => Storage::url($path)]);
+    });
+
     Route::get('/publier-une-propriete', [propertiesController::class, 'create'])->name('property.create');
+
+
+    Route::get('/communes/{id_dep}', [propertiesController::class, 'getCommunes'])->name('adresses.communes');
+
+    Route::get('/arrondissements/{id_com}', [propertiesController::class, 'getArrondissements'])->name('adresses.arrondissements');
 
     Route::get('/modifier-une-propriete/{id}', [propertiesController::class, 'edit'])->name('property.edit');
 

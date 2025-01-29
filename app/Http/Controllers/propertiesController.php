@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Arrondissement;
+use App\Models\Commune;
+use App\Models\Departement;
 use App\Models\images;
 use App\Models\properties;
 use App\Models\statuts;
@@ -63,7 +66,29 @@ class propertiesController extends Controller
     public function create(){
         $types = Types::all();
         $statut = statuts::all();
-        return view('properties.create', compact('types', 'statut'));
+        $departements = Departement::all();
+        return view('properties.create', compact('types', 'statut', 'departements'));
+    }
+
+    public function getCommunes($id_dep)
+    {
+        $commune = Commune::where('id_dep', $id_dep)->get();
+        return response()->json($commune);
+
+    }
+
+
+    public function getArrondissements($id_com)
+    {
+        $arrondissements = Arrondissement::where('id_com', $id_com)->get();
+        return response()->json($arrondissements);
+    }
+
+
+    public function showByLocation($adresse)
+    {
+        $property = properties::where('adresse', $adresse)->get();
+        return view('properties.showByLocation', compact('property'));
     }
     
     public function store(Request $request){
