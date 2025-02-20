@@ -22,7 +22,7 @@ class propertiesController extends Controller
 
     public function search(Request $request){
         $search = $request->input('search');
-        $properties = properties::where('adresse', 'like', '%' . $search . '%')->get();
+        $properties = properties::where('adresse', 'like', '%' . $search . '%')->paginate(10);
         return view('properties.properties', compact('properties'));
     }
 
