@@ -56,7 +56,7 @@ class propertiesController extends Controller
     }
 
     public function showByStatus($id){
-        $property = properties::where('statut', $id)->get();
+        $property = properties::where('statut', $id)->paginate(6);
         return view('properties.showByStatus', compact('property'));
     }
 
