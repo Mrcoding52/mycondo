@@ -22,7 +22,7 @@ class propertiesController extends Controller
 
     public function search(Request $request){
         $search = $request->input('search');
-        $properties = properties::where('adresse', 'like', '%' . $search . '%')->paginate(10);
+        $properties = properties::where('adresse', 'like', '%' . $search . '%')->::paginate(10);
         return view('properties.properties', compact('properties'));
     }
 
@@ -64,7 +64,7 @@ class propertiesController extends Controller
     }
 
     public function create(){
-        $types = Typespaginate(10);        $statut = statutspaginate(10);        $departements = Departementpaginate(10);        return view('properties.create', compact('types', 'statut', 'departements'));
+        $types = Types::paginate(10);        $statut = statuts::paginate(10);        $departements = Departement::paginate(10);        return view('properties.create', compact('types', 'statut', 'departements'));
     }
 
     public function getCommunes($id_dep)
@@ -186,7 +186,7 @@ class propertiesController extends Controller
     public function edit($id)
     {
         $properties = properties::findOrFail($id);
-        $types = Typespaginate(10);        $statut = statutspaginate(10);        return view('properties.edit', compact('properties', 'types', 'statut'));
+        $types = Types::paginate(10);        $statut = statuts::paginate(10);        return view('properties.edit', compact('properties', 'types', 'statut'));
     }
 
     public function update(Request $request, $id)
