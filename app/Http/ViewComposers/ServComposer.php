@@ -9,8 +9,7 @@ class ServComposer
 {
     public function compose(View $view)
     {
-        $service = services::all();
-        $view->with('service', $service);
+        $service = servicespaginate(10);        $view->with('service', $service);
     }
 }
 

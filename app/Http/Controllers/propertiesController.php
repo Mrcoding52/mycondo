@@ -64,10 +64,7 @@ class propertiesController extends Controller
     }
 
     public function create(){
-        $types = Types::all();
-        $statut = statuts::all();
-        $departements = Departement::all();
-        return view('properties.create', compact('types', 'statut', 'departements'));
+        $types = Typespaginate(10);        $statut = statutspaginate(10);        $departements = Departementpaginate(10);        return view('properties.create', compact('types', 'statut', 'departements'));
     }
 
     public function getCommunes($id_dep)
@@ -189,9 +186,7 @@ class propertiesController extends Controller
     public function edit($id)
     {
         $properties = properties::findOrFail($id);
-        $types = Types::all();
-        $statut = statuts::all();
-        return view('properties.edit', compact('properties', 'types', 'statut'));
+        $types = Typespaginate(10);        $statut = statutspaginate(10);        return view('properties.edit', compact('properties', 'types', 'statut'));
     }
 
     public function update(Request $request, $id)

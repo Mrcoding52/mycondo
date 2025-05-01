@@ -9,8 +9,7 @@ class StatusComposer
 {
     public function compose(View $view)
     {
-        $status = statuts::all();
-        $view->with('status', $status);
+        $status = statutspaginate(10);        $view->with('status', $status);
     }
 }
 

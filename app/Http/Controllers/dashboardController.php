@@ -13,9 +13,7 @@ class dashboardController extends Controller
      */
     public function index()
     {
-        $properties = properties::all();
-        $services = services::all();
-        return view('dashboard', compact('properties', 'services'));
+        $properties = propertiespaginate(10);        $services = servicespaginate(10);        return view('dashboard', compact('properties', 'services'));
     }
 
     /**
