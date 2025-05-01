@@ -170,19 +170,19 @@
                             Co - location
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            @foreach (array_slice($type->toArray(), 0, 2) as $item)
-                            <li class="dropdown-submenu"><a class="dropdown-item " href="{{route('property.showByType',  $item['id'])}}">{{$item['name']}}</a>
-                                {{-- <ul class="dropdown-menu">
-                                    @foreach (array_slice($status->toArray(), 0, 2) as $item1)
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('property.filterByTypeAndStatus', ['type_id' => $item['id'], 'status_id' => $item1['id']]) }}">
-                                            {{ $item1['name'] }}
-                                        </a>
-                                    </li>
-                                    @endforeach
-                                </ul> --}}
-                            </li>
-                            @endforeach
+                        @foreach (array_slice($type->toArray(), 0, 2) as $item)
+                        <li class="dropdown-submenu"><a class="dropdown-item " href="{{route('property.showByType',  $item->id)}}">{{$item->name}}</a>
+                            {{-- <ul class="dropdown-menu">
+                                @foreach (array_slice($status->toArray(), 0, 2) as $item1)
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('property.filterByTypeAndStatus', ['type_id' => $item->id, 'status_id' => $item1['id']]) }}">
+                                        {{ $item1['name'] }}
+                                    </a>
+                                </li>
+                                @endforeach
+                            </ul> --}}
+                        </li>
+                        @endforeach
                         </ul>
                     </li>
                     
