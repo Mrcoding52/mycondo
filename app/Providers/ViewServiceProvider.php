@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Http\ViewComposers\servComposer;
+use App\Http\ViewComposers\ServComposer;
 use App\Http\ViewComposers\StatusComposer;
 use App\Http\ViewComposers\TypeComposer;
 use Illuminate\Support\Facades\View;
