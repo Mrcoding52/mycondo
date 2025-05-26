@@ -145,9 +145,15 @@
                                     {{$propertie->price}} XOF @if($propertie->statut == 1)<span>/mois</span>@endif
                                 </h4>
                             </div>
-                            <div class="property-overflow">
-                                <img class="d-block w-100" src="img/properties/properties-1.jpg" alt="properties">
-                            </div>
+                            @foreach ($propertie->images->take(2) as $image)
+
+                                @if($loop->first)
+                                    <div class="property-overflow">
+                                        <img class="d-block w-100" src="{{ asset('storage/'.$image->images) }}" alt="properties">
+                                    </div>
+                                @endif
+
+                            @endforeach
                         </a>
                     </div>
                     <div class="detail">

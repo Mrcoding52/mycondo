@@ -3,6 +3,7 @@
 
 
     <div class="container tables-box mb-50">
+        <br><br><br>
         <h3 class="heading-2">Liste des proprietés</h3>
         <a type="button" href="{{route('property.create')}}" class="btn btn-outline-primary bomd">Ajouter une nouvelle proprieté</a><br><br>
         <table class="table table-bordered mb-0">

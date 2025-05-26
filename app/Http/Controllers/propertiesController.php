@@ -33,7 +33,7 @@ class propertiesController extends Controller
 
     public function coPropertyView($id)
     {
-        $coproperties = properties::where('statut', $id)->get();
+        $coproperties = properties::where('statut', $id)->paginate(4);
         return view('properties.co-properties', compact('coproperties'));
     }
 
@@ -47,19 +47,19 @@ class propertiesController extends Controller
         // Récupérer les propriétés correspondant au type et statut donnés
         $property = properties::where('type', $type_id)
             ->where('statut', $status_id)
-            ->get();
+            ->paginate(4);
 
         return view('properties.showByStatus', compact('property'));
     }
 
 
     public function showByType($id){
-        $property = properties::where('type', $id)->get();
+        $property = properties::where('type', $id)->paginate(4);
         return view('properties.showByType', compact('property'));
     }
 
     public function showByStatus($id){
-        $property = properties::where('statut', $id)->get();
+        $property = properties::where('statut', $id)->paginate(4);
         return view('properties.showByStatus', compact('property'));
     }
 
@@ -87,7 +87,7 @@ class propertiesController extends Controller
 
     public function showByLocation($adresse)
     {
-        $property = properties::where('adresse', $adresse)->get();
+        $property = properties::where('adresse', $adresse)->paginate(4);
         return view('properties.showByLocation', compact('property'));
     }
     
