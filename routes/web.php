@@ -79,7 +79,7 @@ Route::middleware('auth')->group(function () {
         // Renvoyer l'URL de l'image enregistrée
         return response()->json(['url' => Storage::url($path)]);
     });
-
+//
     Route::get('/publier-une-propriete', [propertiesController::class, 'create'])->name('property.create');
 
 
