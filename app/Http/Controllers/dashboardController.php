@@ -13,7 +13,13 @@ class dashboardController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $properties = properties::paginate(10);        $services = services::paginate(10);        return view('dashboard', compact('properties', 'services'));
+=======
+        $properties = properties::all();
+        $services = services::all();
+        return view('dashboard', compact('properties', 'services'));
+>>>>>>> ef4c22462ca54af1a2d1e0cac7592c8e2157283f
     }
 
     /**

@@ -90,7 +90,11 @@ class propertiesController extends Controller
         $property = properties::where('adresse', $adresse)->paginate(4);
         return view('properties.showByLocation', compact('property'));
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> ef4c22462ca54af1a2d1e0cac7592c8e2157283f
     public function store(Request $request){
 
         $request->validate([
@@ -111,6 +115,7 @@ class propertiesController extends Controller
             // Messages personnalisés pour les champs
             'titre.required' => 'Le titre est requis.',
             'titre.max' => 'Le titre ne doit pas dépasser 255 caractères.',
+<<<<<<< HEAD
 
             'statut.required' => 'Le statut est requis.',
 
@@ -119,6 +124,16 @@ class propertiesController extends Controller
             'nChambre.integer' => 'Le nombre de chambres doit être un nombre entier.',
             'nChambre.min' => 'Le nombre de chambres doit être au moins 0.',
 
+=======
+            
+            'statut.required' => 'Le statut est requis.',
+            
+            'type.required' => 'Le type est requis.',
+            
+            'nChambre.integer' => 'Le nombre de chambres doit être un nombre entier.',
+            'nChambre.min' => 'Le nombre de chambres doit être au moins 0.',
+        
+>>>>>>> ef4c22462ca54af1a2d1e0cac7592c8e2157283f
             'nDouche.integer' => 'Le nombre de douches doit être un nombre entier.',
             'nDouche.min' => 'Le nombre de douches doit être au moins 0.',
 
@@ -130,17 +145,26 @@ class propertiesController extends Controller
 
             'price.required' => 'Le prix est requis.',
             'price.numeric' => 'Le prix doit être un nombre.',
+<<<<<<< HEAD
 
             'telephone.required' => 'Le numéro de telephone est requis.',
             'telephone.integer' => 'Le numéro de telephone doit être un nombre entier.',
             'telephone.min' => 'Le numéro de telephone doit être au moins 8 caractères.',
 
+=======
+        
+            'telephone.required' => 'Le numéro de telephone est requis.',
+            'telephone.integer' => 'Le numéro de telephone doit être un nombre entier.',
+            'telephone.min' => 'Le numéro de telephone doit être au moins 8 caractères.',
+        
+>>>>>>> ef4c22462ca54af1a2d1e0cac7592c8e2157283f
             'images.required' => 'Veuillez sélectionner au moins une image.',
             'images.array' => 'Le champ images doit être un tableau.',
             'images.max' => 'Vous ne pouvez télécharger que 4 images maximum.',
             'images.*.image' => 'Chaque fichier doit être une image.',
             'images.*.mimes' => 'Chaque image doit être au format jpg, jpeg ou png.',
             'images.*.max' => 'Chaque image ne doit pas dépasser 3 Mo.',
+<<<<<<< HEAD
 
             'adresse.required' => 'L\'adresse est requise.',
 
@@ -148,6 +172,15 @@ class propertiesController extends Controller
             'details.min' => 'Les détails doivent comporter minimum 10 caractères.',
         ]);
 
+=======
+        
+            'adresse.required' => 'L\'adresse est requise.',
+            
+            'details.required' => 'Les détails sont requis.',
+            'details.min' => 'Les détails doivent comporter minimum 10 caractères.',
+        ]);
+        
+>>>>>>> ef4c22462ca54af1a2d1e0cac7592c8e2157283f
 
         $properties = new properties();
         $properties->idUser = Auth::id();
@@ -172,7 +205,11 @@ class propertiesController extends Controller
 
 
             foreach ($request->file('images') as $file) {
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> ef4c22462ca54af1a2d1e0cac7592c8e2157283f
                 $path = $file->store('uploads','public');
                 images::create([
                     'idPro'=> $properties->id,
@@ -222,7 +259,11 @@ class propertiesController extends Controller
             'nDouche.integer' => 'Le nombre de douches doit être un nombre entier.',
             'price.required' => 'Le prix est requis.',
             'telephone.required' => 'Le numéro de téléphone est requis.',
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> ef4c22462ca54af1a2d1e0cac7592c8e2157283f
             'images.required' => 'Veuillez sélectionner au moins une image.',
             'images.array' => 'Le champ images doit être un tableau.',
             'images.max' => 'Vous ne pouvez télécharger que 4 images maximum.',
@@ -277,5 +318,9 @@ class propertiesController extends Controller
         return redirect()->route('dashboard')->with('status', 'Article supprimé avec succès...');
     }
 
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> ef4c22462ca54af1a2d1e0cac7592c8e2157283f
 }

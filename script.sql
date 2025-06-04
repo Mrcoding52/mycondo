@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+create database if not exists decoupage_territorial_benin DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+use decoupage_territorial_benin;
+
+>>>>>>> ef4c22462ca54af1a2d1e0cac7592c8e2157283f
 DROP TABLE IF EXISTS departement ; 
 CREATE TABLE departement (
 	id_dep INT(5) NOT NULL, 
@@ -5982,4 +5988,8 @@ INSERT INTO `quartier` (`id_quart`, `lib_quart`, `id_arrond`) VALUES
 (5301, 'HAYA', 546),
 (5302, 'ZADO-ADAGON', 546),
 (5303, 'ZADO-GAGBE', 546),
+<<<<<<< HEAD
 (5304, 'ZOGBODOMEY', 546);
+=======
+(5304, 'ZOGBODOMEY', 546);
+>>>>>>> ef4c22462ca54af1a2d1e0cac7592c8e2157283f

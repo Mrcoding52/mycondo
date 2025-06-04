@@ -3,6 +3,10 @@
 
 
     <div class="container tables-box mb-50">
+<<<<<<< HEAD
+=======
+        <br><br><br>
+>>>>>>> ef4c22462ca54af1a2d1e0cac7592c8e2157283f
         <h3 class="heading-2">Liste des proprietés</h3>
         <a type="button" href="{{route('property.create')}}" class="btn btn-outline-primary bomd">Ajouter une nouvelle proprieté</a><br><br>
         <table class="table table-bordered mb-0">

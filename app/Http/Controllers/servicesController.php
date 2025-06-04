@@ -11,7 +11,12 @@ class servicesController extends Controller
 
     public function index()
     {
+<<<<<<< HEAD
         $services = services::paginate(10);        return view('services.services', compact('services'));
+=======
+        $services = services::all();
+        return view('services.services', compact('services'));
+>>>>>>> ef4c22462ca54af1a2d1e0cac7592c8e2157283f
     }
 
     public function create()
