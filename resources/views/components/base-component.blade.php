@@ -142,7 +142,7 @@
                         <a class="nav-link dropdown-toggle" href="{{ route('acceuil') }}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Acceuil
                         </a>
-                        
+
                     </li>
                     <li class="nav-item dropdown active">
                         <a class="nav-link dropdown-toggle" href="{{route('coproperty.view',  3)}}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -163,48 +163,48 @@
                             </li>
                             @endforeach
                         </ul>
-                        
+
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="{{route('property.showByStatus', 1)}}" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Co - location
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        @foreach ($type->take(2) as $item)
-                        <li class="dropdown-submenu"><a class="dropdown-item " href="{{route('property.showByType',  $item->id)}}">{{$item->name}}</a>
-                            {{-- <ul class="dropdown-menu">
-                                @foreach (array_slice($status->toArray(), 0, 2) as $item1)
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('property.filterByTypeAndStatus', ['type_id' => $item->id, 'status_id' => $item1['id']]) }}">
-                                        {{ $item1['name'] }}
-                                    </a>
-                                </li>
-                                @endforeach
-                            </ul> --}}
-                        </li>
-                        @endforeach
+                            @foreach ($type->take(2) as $item)
+                            <li class="dropdown-submenu"><a class="dropdown-item " href="{{route('property.showByType',  $item->id)}}">{{$item->name}}</a>
+                                {{-- <ul class="dropdown-menu">
+                                    @foreach (array_slice($status->toArray(), 0, 2) as $item1)
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('property.filterByTypeAndStatus', ['type_id' => $item['id'], 'status_id' => $item1['id']]) }}">
+                                            {{ $item1['name'] }}
+                                        </a>
+                                    </li>
+                                    @endforeach
+                                </ul> --}}
+                            </li>
+                            @endforeach
                         </ul>
                     </li>
-                    
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="{{route('property.view')}}" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Proprietés
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        @foreach ($type->skip(1)->take(2) as $item)
-                            <li class="dropdown-submenu"><a class="dropdown-item " href="{{route('property.showByType',  $item->id)}}">{{$item->name}}</a>
+                            @foreach ($type->take(2) as $item)
+                            <li class="dropdown-submenu"><a class="dropdown-item " href="{{route('property.showByType',  $item['id'])}}">{{$item['name']}}</a>
                                 <ul class="dropdown-menu">
-                                    @foreach (array_slice($status->toArray(), 0, 2) as $item1)
+                                    @foreach ($status->take(2) as $item1)
                                     <li>
-                                        <a class="dropdown-item" href="{{ route('property.filterByTypeAndStatus', ['type_id' => $item->id, 'status_id' => $item1['id']]) }}">
+                                        <a class="dropdown-item" href="{{ route('property.filterByTypeAndStatus', ['type_id' => $item['id'], 'status_id' => $item1['id']]) }}">
                                             {{ $item1['name'] }}
                                         </a>
                                     </li>
                                     @endforeach
                                 </ul>
                             </li>
-                        @endforeach
-                        </ul>  
+                            @endforeach
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="{{route('services')}}" id="navbarDropdownMenuLink11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -212,7 +212,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink11">
                             @foreach ($service as $item)
-                                
+
                             <li><a style="text-wrap: wrap;" class="dropdown-item" href="{{route('service.show', $item->id)}}">{{$item->title}}</a></li>
                             @endforeach
                         </ul>
@@ -249,7 +249,7 @@
             <h3 class="heading">Pages</h3>
             <ul class="menu-list">
                 <li><a href="{{ route('acceuil') }}" class="active pt0">Acceuil <em class="fa fa-chevron-down"></em></a>
-                
+
                 </li>
                 <li>
                     <a href="{{route('property.view')}}">Proprietés <em class="fa fa-chevron-down"></em></a>

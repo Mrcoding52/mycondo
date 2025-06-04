@@ -31,8 +31,9 @@ class propertiesController extends Controller
         return view('properties.properties', compact('properties'));
     }
 
-    public function coPropertyView($id){
-        $coproperties = properties::where('statut', $id)->paginate(6);
+    public function coPropertyView($id)
+    {
+        $coproperties = properties::where('statut', $id)->paginate(4);
         return view('properties.co-properties', compact('coproperties'));
     }
 
@@ -43,25 +44,30 @@ class propertiesController extends Controller
 
     public function filterPropertyByTypeAndStatus($type_id, $status_id)
     {
+        // Récupérer les propriétés correspondant au type et statut donnés
         $property = properties::where('type', $type_id)
             ->where('statut', $status_id)
-            ->paginate(6);
+            ->paginate(4);
+
         return view('properties.showByStatus', compact('property'));
     }
 
 
     public function showByType($id){
-        $property = properties::where('type', $id)->paginate(6);
+        $property = properties::where('type', $id)->paginate(4);
         return view('properties.showByType', compact('property'));
     }
 
     public function showByStatus($id){
-        $property = properties::where('statut', $id)->paginate(6);
+        $property = properties::where('statut', $id)->paginate(4);
         return view('properties.showByStatus', compact('property'));
     }
 
     public function create(){
-        $types = Types::paginate(10);        $statut = statuts::paginate(10);        $departements = Departement::paginate(10);        return view('properties.create', compact('types', 'statut', 'departements'));
+        $types = Types::all();
+        $statut = statuts::all();
+        $departements = Departement::all();
+        return view('properties.create', compact('types', 'statut', 'departements'));
     }
 
     public function getCommunes($id_dep)
@@ -79,11 +85,12 @@ class propertiesController extends Controller
     }
 
 
-    public function showByLocation($adresse){
-        $property = properties::where('adresse', $adresse)->paginate(6);
+    public function showByLocation($adresse)
+    {
+        $property = properties::where('adresse', $adresse)->paginate(4);
         return view('properties.showByLocation', compact('property'));
     }
-    
+
     public function store(Request $request){
 
         $request->validate([
@@ -104,14 +111,14 @@ class propertiesController extends Controller
             // Messages personnalisés pour les champs
             'titre.required' => 'Le titre est requis.',
             'titre.max' => 'Le titre ne doit pas dépasser 255 caractères.',
-            
+
             'statut.required' => 'Le statut est requis.',
-            
+
             'type.required' => 'Le type est requis.',
-            
+
             'nChambre.integer' => 'Le nombre de chambres doit être un nombre entier.',
             'nChambre.min' => 'Le nombre de chambres doit être au moins 0.',
-        
+
             'nDouche.integer' => 'Le nombre de douches doit être un nombre entier.',
             'nDouche.min' => 'Le nombre de douches doit être au moins 0.',
 
@@ -123,24 +130,24 @@ class propertiesController extends Controller
 
             'price.required' => 'Le prix est requis.',
             'price.numeric' => 'Le prix doit être un nombre.',
-        
+
             'telephone.required' => 'Le numéro de telephone est requis.',
             'telephone.integer' => 'Le numéro de telephone doit être un nombre entier.',
             'telephone.min' => 'Le numéro de telephone doit être au moins 8 caractères.',
-        
+
             'images.required' => 'Veuillez sélectionner au moins une image.',
             'images.array' => 'Le champ images doit être un tableau.',
             'images.max' => 'Vous ne pouvez télécharger que 4 images maximum.',
             'images.*.image' => 'Chaque fichier doit être une image.',
             'images.*.mimes' => 'Chaque image doit être au format jpg, jpeg ou png.',
             'images.*.max' => 'Chaque image ne doit pas dépasser 3 Mo.',
-        
+
             'adresse.required' => 'L\'adresse est requise.',
-            
+
             'details.required' => 'Les détails sont requis.',
             'details.min' => 'Les détails doivent comporter minimum 10 caractères.',
         ]);
-        
+
 
         $properties = new properties();
         $properties->idUser = Auth::id();
@@ -165,7 +172,7 @@ class propertiesController extends Controller
 
 
             foreach ($request->file('images') as $file) {
-                
+
                 $path = $file->store('uploads','public');
                 images::create([
                     'idPro'=> $properties->id,
@@ -182,7 +189,9 @@ class propertiesController extends Controller
     public function edit($id)
     {
         $properties = properties::findOrFail($id);
-        $types = Types::paginate(10);        $statut = statuts::paginate(10);        return view('properties.edit', compact('properties', 'types', 'statut'));
+        $types = Types::all();
+        $statut = statuts::all();
+        return view('properties.edit', compact('properties', 'types', 'statut'));
     }
 
     public function update(Request $request, $id)
@@ -213,7 +222,7 @@ class propertiesController extends Controller
             'nDouche.integer' => 'Le nombre de douches doit être un nombre entier.',
             'price.required' => 'Le prix est requis.',
             'telephone.required' => 'Le numéro de téléphone est requis.',
-            
+
             'images.required' => 'Veuillez sélectionner au moins une image.',
             'images.array' => 'Le champ images doit être un tableau.',
             'images.max' => 'Vous ne pouvez télécharger que 4 images maximum.',
@@ -268,5 +277,5 @@ class propertiesController extends Controller
         return redirect()->route('dashboard')->with('status', 'Article supprimé avec succès...');
     }
 
-   
+
 }
