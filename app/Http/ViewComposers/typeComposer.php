@@ -9,8 +9,7 @@ class TypeComposer
 {
     public function compose(View $view)
     {
-        $type = Types::all();
-        $view->with('type', $type);
+        $type = Types::paginate(10);        $view->with('type', $type);
     }
 }
 
